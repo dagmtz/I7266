@@ -1,0 +1,134 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla para reporte en LaTeX
+% Por Daniel Martínez
+% dag.mtz.97@gmail.com
+%
+%
+% Basado en:
+%
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Declarar el tipo de documento
+\documentclass[11pt,letterpaper]{exam} 
+
+% Paquetes para idioma, carácteres y símbolos
+\usepackage[condensed,math]{iwona}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Tipo de letra 
+% \usepackage{tgbonum}
+% \usepackage{tgadventor}
+
+% Márgenes, figuras, gráficos, tablas, listas
+%\usepackage{geometry}
+\usepackage[top=0.6in, bottom=0.6in, left=0.6in, right=0.6in]{geometry}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{enumitem}
+%\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+% \usepackage{multirow}
+% \usepackage{textcomp}
+
+\usepackage{tikz}
+
+%\usepackage{mathtools}
+%\usepackage{siunitx}
+%\usepackage{mathrsfs}
+
+% Otros
+
+% \usepackage{hyperref}
+% \usepackage[os=win]{menukeys}
+% \usepackage{biblatex}
+% \addbibresource{sample.bib}
+
+% \usepackage{fancyhdr}
+% \usepackage{listingsutf8}
+% \usepackage{courier}
+% \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+
+% Configuraciones 
+% \input{arduinoLanguage.tex}
+
+% \pagestyle{fancy}
+
+% \renewcommand\lstlistingname{Bloque de código}
+% \renewcommand\lstlistlistingname{Índice de códigos}
+
+\setlength{\headheight}{16pt}
+
+% \rhead{\leftmark}
+% \lhead{\rightmark}
+% \cfoot{\thepage}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Comando para líneas horizontales
+
+% \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+% \definecolor{mylilas}{RGB}{170,55,241}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio del documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \begin{center}
+        \textsc{\Large Universidad de Guadalajara}\\
+        \textsc{Centro Universitario de Ciencias Exactas e Ingenierías}\\
+        \vspace{6mm}
+        \textbf{Examen parcial \#1\\ Programación de Sistemas Embebidos - I7266}\\
+        \vspace{6mm}
+        {\small Nombre: \rule{0.7\textwidth}{0.4pt}} Fecha: \rule{0.15\textwidth}{0.4pt}\\
+        \vspace{6mm}
+        \fbox{\fbox{\parbox{6in}{\centering You have 20 minutes to answer as many of the following questions as you can. Each question gives you a certain number of points, you will only obtain them if your answer is correct, if your answer is partially correct, you will obtain a proportional part of the points.}}}
+    \end{center}
+    \begin{questions}
+        \question What do you understand by \textit{microcontroller architechture}? (15 points)
+
+        \question Describe the primary function of a microcontroller in an embedded system. (5 points)
+    
+        \question What is a register? (5 points)
+        \begin{parts}
+            \part What are registers used for? (10 points)
+            
+            \part What are the differences between registers and RAM memory? (10 points)
+        \end{parts}
+    
+        
+        \question Explain the differences between \textit{volatile} and \textit{non-volatile} memory. (5 points)
+        \begin{parts}
+            \part Is RAM volatile? What does RAM mean and what is it used for? (10 points)
+            
+            \part Is ROM volatile? What does ROM mean and what is it used for? (10 points)
+        \end{parts}
+        
+        \question What is an interrupt?  (5 points) 
+        \begin{parts}
+            \part What is the difference between a software interrupt and a hardware interrupt? (10 points)
+            
+            \part What is the advantage of using an interrupt against polling for an event? (10 points)
+        \end{parts}
+
+        \question In an 16-bit microcontroller, the last reachable address is \texttt{65,535} in decimal. In a 32-bit microcontroller, what would be the last addressable memory location? (15 points)
+        
+        \clearpage
+        \question Why do we need a compiler and how does a compiler work? (20 points)
+
+        \question The following diagram represents the RAM memory of a microcontroller. At address \texttt{0x00F0}, an \textit{uint32_t} variable is stored. Then, after that variable, an array of 16 elements of the datatype \textit{uint_16}
+        
+    \end{questions}
+
+\end{document}
+%\vspace{\stretch{1}}

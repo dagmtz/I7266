@@ -1,0 +1,464 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[sfmath]{kpfonts}
+\usepackage{helvet}
+%\usepackage{lmodern}
+
+\usetheme{Berlin}
+\usecolortheme{default}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Computer storage and data types] %optional
+{Computer storage and data types}
+
+\subtitle{Basics for data storage}
+
+\author{Daniel Giovanni Martínez Sandoval}
+
+\institute[CUCEI - UDG]
+{
+  \textsc{
+  Centro Universitario de Ciencias Exactas e Ingenierías\\
+  Universidad de Guadalajara
+  }
+}
+
+\date[I7266 - 24B] % (optional)
+{\footnotesize I7266 - Programación de Sistemas Embebidos - 2024B }
+
+\logo{\includegraphics[height=15mm]{logo_udg_color.eps}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{How do we store data in computer systems?}
+\subsection{Brief history of data storage}
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Brief history of data storage}
+Data storage in computers has evolved from mechanical methods to faster and more reliable storage without moving parts. \\[5mm] \pause
+Let us explore some of these methods.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Punch cards}
+  One of the first methods for storage were \textit{Punch Cards} mainly used between the 1890s and 1960s: \pause
+  \begin{itemize}
+    \item In the 1890s, Herman Hollerith developed a punch card system (based on Joseph-Marie Jacquard's idea, who used punched cards to control textile looms) for data storage and processing for the U.S. Census Bureau. \pause
+    \item His machine was able to read and sort punched cards, revolutionizing data processing at the time and leading to the founding of IBM (International Business Machines), which became a major producer of punch card technology.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Punch cards (cont.)}
+  \begin{itemize}
+    \item A punch card is a piece of stiff paper with holes punched into it. Each hole represents a piece of data, typically a bit (binary digit) of information. \pause
+    \item The card is divided into rows and columns, with each row typically representing one character or value, and each column a bit position (0 or 1).  \pause
+    \item Machines would "read" the punch cards by passing them through an array of mechanical or electrical sensors that detected the holes. \pause
+    \item Punch cards were widely used in the first half of the 20th century, particularly for business and government applications. 
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Punch cards (cont.)}
+  \begin{itemize}
+    \item Early computers like the ENIAC, IBM 1401, and UNIVAC relied on punch cards for both data input and programming. \pause
+    \item COBOL, FORTRAN, and other early programming languages were often coded and compiled using punch cards. \pause
+    \item During the 1960s and 1970s, punch cards were a staple in computer labs and industries like banking, manufacturing, and government. 
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Magnetic drums}
+  \textit{Magnetic drums} were also one of the earliest forms of data storage, they were used in computers from the 1930s through the 1950s: \pause
+  \begin{itemize}
+    \item Magnetic drum memory was a cylindrical storage device coated with a magnetic material, used to store data as magnetic patterns. The concept was developed in the 1930s by Gustav Tauschek in Austria, and later improved and used in early digital computers.\pause
+    \item Magnetic drums became widely used in the 1950s for main memory in many early computers like the IBM 650, UNIVAC I, and the ERA 1103.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Magnetic drums (cont.)}
+  \begin{itemize}
+    \item A magnetic drums are metal cylinders, typically about 30 to 60 centimetre long, coated with a magnetic oxide, which rotate continuously, and data is written to or read from the surface by fixed read/write heads, positioned along the length of the drum. As the drum rotates, each head reads or writes data on a specific track (a circular path on the drum's surface). \pause
+    \item The drum operated at a consistent rotational speed, and the timing of the read/write operations was critical, as data could only be accessed when the desired part of the drum surface was under the read/write head.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Magnetic drums (cont.)}
+  \begin{itemize}
+    \item They were capable of Random Access although not very efficient. \pause 
+    \item They stored close to 64KB at max. \pause
+    \item They were used as both as primary or secondary storage.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Magnetic cores}
+  \textit{Magnetic core memory} was a type of non-volatile memory used in computers from the early 1950s until the mid-1970s: \pause
+  \begin{itemize}
+    \item Magnetic core memory uses tiny magnetized rings (cores) made of ferrite material to store data, where each ring stores one bit of information: either a 0 or a 1, depending on the magnetic polarity of the core. \pause
+    \item The memory is arranged in a grid or matrix of these cores. \pause
+    \item It was a type of random access memory (RAM), meaning any part of the memory could be accessed directly and independently, unlike earlier sequential storage methods like punch cards or magnetic tape.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Magnetic cores (cont.)}
+  \begin{itemize}
+    \item Each core is made of a small ferrite ring, and wires are threaded through the core to read, write, and reset the magnetic state. The cores are organized in a grid or matrix, with rows and columns of wires. Addressing a specific core requires sending current through specific row and column wires to access that bit. \pause
+    \item Data is written to memory by sending electrical currents through the wires, and reading data involves changing the magnetic state of a core and detecting if the change has occurred, which tells the system what the stored bit was. This process of reading destroys the data, so it had to be rewritten after every read. 
+  \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Magnetic cores (cont.)}
+  \begin{itemize}
+    \item They were good for Random Acces, very reliable and long-lasting, non-voaltile and easily scalable. \pause 
+    \item Their main disadvantage was that manufacturing them was labour intensive, and thus, they were quite expensive. \pause
+    \item They were used as both as primary or secondary storage.
+  \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Hard Disk Drives}
+  In 1956, IBM introduced the \textit{Hard Disk Drives} or HDD, which are still in use today: \pause
+  \begin{itemize}
+    \item HDDs store data on rotating disks (platters) coated with magnetic material. \pause
+    \item The HDD stores information in binary form (0s and 1s), using a magnetic read/write head which changes in magnetic polarity to represent bits of data. \pause
+    \item Rotational speed and data density on the platters are the main factors determining the speed and storage capacity of the HDD. \pause
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Hard Disk Drives (cont.)}
+  \begin{itemize}
+    \item The first HDD, the IBM 350, was introduced in 1956 as part of the IBM RAMAC system. It used 50 24-inch platters and had a storage capacity of about 5 MB. \pause
+    \item Early HDDs were large and expensive, making them accessible only to businesses and research institutions. \pause
+    \item Modern HDDs are much smaller and offer thousands of times more capacity. A typical consumer HDD today can store anywhere from 1 TB to 10 TB. \pause
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Floppy disks}
+  \textit{Floppy disks} were a popular form of removable storage from the 1970s through the early 2000s: \pause
+  \begin{itemize}
+    \item A floppy disk is a thin, flexible magnetic storage medium encased in a square or rectangular plastic shell. They were widely used to store and transfer files, as well as to distribute software, operating systems, and games. \pause
+    \item The actual storage medium is a circular, thin disk made of flexible plastic and coated with a magnetic material (usually iron oxide) where data is stored on concentric tracks, and the magnetic properties of the disk are altered to represent binary data (0s and 1s). 
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Solid-State Drives}
+  \textit{Magnetic core memory} was a type of non-volatile memory used in computers from the early 1950s until the mid-1970s: \pause
+  \begin{itemize}
+    \item Solid-State Drives (SSDs) are data storage devices that use flash memory to store information, meaning they have no moving parts (hence the term "solid-state"). \pause
+    \item SSDs are significantly faster and more durable than HDDs, making them a popular choice for modern computing systems. \pause
+    \item Data in SSDs is stored in memory cells, which are organized into pages and further into blocks, where different types of flash cells store from 1 bit (SLC) up to 4 bits (QLC).
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Optical storage}
+  \textit{Optical storage} is a type of storage which is still in use, it begun to be used in the 1980s: \pause
+  \begin{itemize}
+    \item CDs, DVDs, and Blu-ray discs emerged in the 1980s and 1990s as optical storage solutions. \pause
+    \item Data is stored using laser technology to read and write to the discs. While CDs and DVDs are less commonly used today, Blu-ray discs remain relevant for large media storage.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Cloud storage}
+  \textit{Cloud storage} is a recent type of storage which started to gain popularity in the 2010s: \pause
+  \begin{itemize}
+    \item In the 2000s, cloud storage became prevalent, allowing data to be stored remotely on distributed servers. \pause
+    \item It enables access to data from anywhere with an internet connection and offers scalable, cost-efficient storage for individuals and organizations. \pause
+    \item Although it is irrelevant for embedded systems as means of primary storage, it is becoming really important for many embedded systems since we are growing towards IoT (Internet of Things) technologies.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+\subsection{Similarities in storage methods}
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Similarities in storage methods}
+  Actually, all these storage methods followed a simple principle: to store binary data. At the most fundamental level, all storage methods encode data in binary form (0s and 1s). Whether using magnetic fields, electrical charges, or optical properties, the data is ultimately represented as binary information that the computer processes. \\ \pause
+  Also, storage methods have always been part of a broader memory hierarchy. This hierarchy includes multiple levels, ranging from fast, volatile memory (like RAM) to slower, non-volatile storage (like HDDs and SSDs). This hierarchy helps balance speed and capacity in computing systems. 
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  We now need to dive deeper into how bits are stored in the current storage technologies.
+\end{frame}
+%---------------------------------------------------------
+
+\section{How does data storage for embedded systems currently work?}
+\subsection{Types of memory}
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Volatile memory}
+  In modern microcontrollers we can usually find: \pause
+  \begin{itemize}
+    \item RAM (Random Access Memory): Used for temporary data storage during program execution, such as stack and heap. \pause
+    \item SRAM (Static RAM): Used in smaller amounts for faster, low-power memory. Commonly used for caches and real-time data storage. \pause
+    \item DRAM (Dynamic RAM): Used for larger memory capacity but is slower than SRAM. Typically found in more resource-intensive embedded systems (e.g., smartphones).
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Non-volatile memory}
+  In modern microcontrollers we can usually find:
+  \begin{itemize}
+    \item Flash Memory: Ued to store the program code and persistent data. Flash memory can be divided into two types: \pause
+    \begin{itemize}
+      \item NOR Flash: Used for code execution in place (XIP) because of its fast read speeds.
+      \item NAND Flash: Primarily used for bulk data storage due to its higher density and cost-effectiveness. \pause
+    \end{itemize}
+    \item EEPROM (Electrically Erasable Programmable Read-Only Memory): Used for storing small amounts of data that must persist across power cycles, such as configuration settings or calibration data.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Memory map}
+  The way the memory in a microcontroller is organized is defined (partially, from the software perspective) by the \textit{memory map}. \pause
+  This is a structured arrangement of different memory areas within the embedded system, defining how the CPU accesses RAM, ROM, Flash, and peripherals. \pause
+  Memory is usually divided into two big groups:
+  \begin{itemize}
+    \item Program Memory: Non-volatile memory (e.g., Flash) that stores the embedded system's firmware or application code.
+    \item Data Memory: Volatile memory (e.g., RAM) used for temporary data storage during program execution.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Static vs. Dynamic memory allocation}
+  Embedded systems often favor static memory allocation over dynamic allocation (e.g., malloc/free in C) to avoid issues such as memory fragmentation and unpredictable behavior. Static allocation is predefined at compile time, while dynamic allocation can lead to inefficiencies in systems with limited memory.\\ \pause
+  Also important to consider is the stack and heap management. Ususally, the stack holds temporary variables for function calls, while the heap is used for dynamically allocated memory.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  Now, how can we use that information to efficiently store information in an embedded system? And why should we care about that?
+\end{frame}
+%---------------------------------------------------------
+
+\section{How do we tell a microcontroller to store data?}
+\subsection{Data types}
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Why do data types exist in programming?}
+  Embedded systems have limited resources, and although dependant on the intended application, they usually have small amounts of memory space compared to regular computers.\\ \pause
+  Since we have limited memory, we want to have exceptional control over how the memory is used. \\ \pause
+  Most programming languages include some level of control over this, specially the mid and low-level languages. This enables programmers to choose better ways to manage the memory, but also sometimes makes it harder to program, since you have to take into account more details about it.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Data types in C}
+  In the C language, we have different ways to describe how we want to use memory in our microcontroller or microprocessor. We will now explore some of the basic data types we will use in the course.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Primitive data types}
+  Primitive data types refer to the most basic data types we wan work with in the C language. These are: integers (int), characters (char), floating poing (float) and double precision (double).
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Memory addresses}
+  A memory address is a unique identifier for a specific location in the microcontroller's memory. \pause
+  We use addresses to identify addressable units. In most systems the smallest addressable unit is the byte, so, each memory cell can store a byte. \\ \pause
+  The address space is the range of possible memory addresses that out control unit can generate. \pause
+  Word Addressing is accessing to memory with the addresses for words, this means, groups of bytes of a predefined size.\\ \pause
+  Also, endianness refers to the order of multi-byte datatypes. We have Little-Endian and Big-Endian.
+\end{frame}
+%---------------------------------------------------------
+
+\end{document}
+
+% %---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Frame title}
+%   % Body
+% \end{frame}
+% %---------------------------------------------------------
+% %---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Embedded systems everywhere}
+%   Embedded systems are a little bit hard to define. This is because the applications for embedded systems has changed over time and has become very broad.\\[5mm] \pause
+%   If we say that embedded systems are ``small'' computer systems that make part of bigger electronic or mechanical systems, how many devices come to your mind?
+% \end{frame}
+  
+%   %---------------------------------------------------------
+%   \begin{frame}
+%     \frametitle{Embedded systems everywhere}
+%     Some areas full of embedded systems, in fact, are: \pause
+%     \begin{columns}
+%       \begin{column}{0.5\textwidth}
+%         \begin{itemize}
+%           \item<2-> Consumer Electronics
+%           \item<3-> Home Appliances
+%           \item<4-> Automotive
+%           \item<5-> Industrial Applications
+%           \item<6-> Medical Devices
+%           \item<7-> Telecommunications
+%         \end{itemize}
+%       \end{column}
+%       \begin{column}{0.5\textwidth}
+%         \begin{center}
+%           \begin{itemize}
+%             \item<8-> Aerospace and Defense
+%             \item<9-> Office Automation
+%             \item<10-> Security Systems
+%             \item<11-> Smart Home Devices
+%             \item<12-> Wearable Devices
+%           \end{itemize}
+%         \end{center}
+%       \end{column}
+%     \end{columns}
+%   \end{frame}
+  
+%   %---------------------------------------------------------
+  
+  
+%   %---------------------------------------------------------
+%   %Example of the \pause command
+%   \begin{frame}
+%   In this slide \pause
+  
+%   the text will be partially visible \pause
+  
+%   And finally everything will be there
+% \end{frame}
+%   %---------------------------------------------------------
+  
+%   \section{Second section}
+  
+%   %---------------------------------------------------------
+%   %Highlighting text
+%   \begin{frame}
+%   \frametitle{Sample frame title}
+  
+%   In this slide, some important text will be
+%   \alert{highlighted} because it's important.
+%   Please, don't abuse it.
+  
+%   \begin{block}{Remark}
+%   Sample text
+%   \end{block}
+  
+%   \begin{alertblock}{Important theorem}
+%   Sample text in red box
+%   \end{alertblock}
+  
+%   \begin{examples}
+%   Sample text in green box. The title of the block is ``Examples".
+%   \end{examples}
+% \end{frame}
+%   %---------------------------------------------------------
+  
+  
+%   %---------------------------------------------------------
+%   %Two columns
+%   \begin{frame}
+%   \frametitle{Two-column slide}
+  
+%   \begin{columns}
+  
+%   \column{0.5\textwidth}
+%   This is a text in first column.
+%   $$E=mc^2$$
+%   \begin{itemize}
+%   \item First item
+%   \item Second item
+%   \end{itemize}
+  
+%   \column{0.5\textwidth}
+%   This text will be in the second column
+%   and on a second tought this is a nice looking
+%   layout in some cases.
+%   \end{columns}
+% \end{frame}
+%   %---------------------------------------------------------
+

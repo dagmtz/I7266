@@ -1,0 +1,68 @@
+CC=avr-gcc
+CDEFINES=-DF_CPU=16000000 -DBAUD_RATE=$(BAUDRATE)
+CFLAGS=-Wall -Os $(CDEFINES)
+CPPFLAGS=
+LDFLAGS=
+
+SDIR=src
+IDIR=inc
+ODIR=obj
+SRCTMPDIR=/home/dagmtz/Code/avr/atmega328p/template
+
+OBJCP=avr-objcopy
+OBJCPFLAGS=-O ihex
+
+TARGET=atmega328p
+PROGRAMMER=usbasp
+PROGFREQ=750kHz
+AVRDUDE=avrdude
+DUDEFLAGS=-p $(TARGET) -c $(PROGRAMMER) -B$(PROGFREQ) -v 
+
+BAUDRATE=9600
+USBDEV=/dev/ttyUSB0
+
+all: main.hex
+
+# debug: main.i main.s main.o main.elf
+
+main.hex: main.elf
+	$(OBJCP) $(OBJCPFLAGS) $< $@
+
+main.elf: *.o
+	$(CC) -mmcu=$(TARGET) $(CFLAGS) -o $@ $^
+
+# main.i: main.c
+# 	$(CC) main.c -mmcu=$(TARGET) $(CFLAGS) -E -o main.i
+
+# main.s: main.c
+# 	$(CC) main.c -mmcu=$(TARGET) $(CFLAGS) -S -o main.s
+
+main.o: main.c
+	$(CC) -mmcu=$(TARGET) $(CFLAGS) -c $<
+
+usart.o: usart.c inc/usart.h
+	$(CC) -mmcu=$(TARGET) $(CFLAGS) -c $<
+
+i2c.o: i2c.c inc/i2c.h
+	$(CC) -mmcu=$(TARGET) $(CFLAGS) -c $<
+
+ds3231.o: ds3231.c inc/ds3231.h
+	$(CC) -mmcu=$(TARGET) $(CFLAGS) -c $<
+
+upload: obj/main.hex
+	sudo $(AVRDUDE) $(DUDEFLAGS) -U flash:w:$< 
+
+serial0: 
+	sudo screen /dev/ttyUSB0 $(BAUDRATE)
+
+serial1: 
+	sudo screen /dev/ttyUSB1 $(BAUDRATE)
+
+init:
+	mkdir $(SDIR) 
+	mkdir $(IDIR)
+	mkdir $(ODIR)
+
+clean: 
+	rm -f *.o main.elf main.hex
+

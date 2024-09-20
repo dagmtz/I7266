@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla para reporte en LaTeX
+% Por Daniel Martínez
+% dag.mtz.97@gmail.com
+%
+%
+% Basado en:
+%
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Declarar el tipo de documento
+\documentclass[11pt,letterpaper]{article} 
+
+% Paquetes para idioma, carácteres y símbolos
+\usepackage[condensed,math]{iwona}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Tipo de letra 
+% \usepackage{tgbonum}
+% \usepackage{tgadventor}
+
+% Márgenes, figuras, gráficos, tablas, listas
+\usepackage[top=1.2in, bottom=1.2in, left=1.5in, right=1.5in]{geometry}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{enumitem}
+%\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+% \usepackage{multirow}
+% \usepackage{textcomp}
+
+%\usepackage{mathtools}
+%\usepackage{siunitx}
+%\usepackage{mathrsfs}
+
+% Otros
+
+% \usepackage{hyperref}
+% \usepackage[os=win]{menukeys}
+% \usepackage{biblatex}
+% \addbibresource{sample.bib}
+
+% \usepackage{fancyhdr}
+% \usepackage{listingsutf8}
+% \usepackage{courier}
+% \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+
+% Configuraciones 
+% \input{arduinoLanguage.tex}
+
+% \pagestyle{fancy}
+
+% \renewcommand\lstlistingname{Bloque de código}
+% \renewcommand\lstlistlistingname{Índice de códigos}
+
+\setlength{\headheight}{16pt}
+
+% \rhead{\leftmark}
+% \lhead{\rightmark}
+% \cfoot{\thepage}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Comando para líneas horizontales
+
+% \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+% \definecolor{mylilas}{RGB}{170,55,241}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio del documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% \hypersetup{pageanchor=false}
+
+% Portada
+\begin{titlepage}
+    \center
+    
+    \textsc{\LARGE Universidad de Guadalajara}\\[0.2cm] % Nombre de la universidad
+    \textsc{Centro Universitario de Ciencias Exactas e Ingenierías}\\[1cm]
+    
+    \HRule \\[0.3cm]
+    { 
+        \LARGE \textbf{Tarea 2} \\[0.3cm]
+        \large \textbf{Conceptos e historia de los sistemas embebidos} \\[0.3cm]
+    }
+    \HRule \\[2cm]
+    
+    \includegraphics[width=6cm]{logo_udg_color.eps}\\[1.25cm] % Logo, necesita paquete graphicx
+    
+    \center
+    \vspace{1cm}
+    \emph{Imparte:} \\ % Nombre del profesor
+    \textsc{Daniel Giovanni Martínez Sandoval} 
+    
+    \vfill
+    \textbf{I7266 - Programación de Sistemas Embebidos - D10} \\
+    Hecho en \textbf{\LaTeX}	
+\end{titlepage}
+
+% Índices
+
+% \tableofcontents	% Índice general
+% \listoffigures		% de figuras
+% \lstlistoflistings  % de listings
+% \listoftables		% de tablas
+
+% \hypersetup{pageanchor=true}
+% \newpage
+
+% Contenido
+
+\section*{Indicaciones}
+\begin{enumerate}[label=(\roman*)]
+    \item Realizar las actividades mencionadas a continuación y subirlas en un documento en formato PDF en el apartado de Classroom correspondiente. 
+\end{enumerate}
+\subsection*{Actividades}
+\begin{enumerate}[label=\arabic*)]
+    \item Investiga y escribe un resumen de sobre los siguintes temas:
+    \begin{itemize}
+        \item Sistemas de numeración binario, decimal y hexadecimal
+        \item Conversiones entre bases 2, 10 y 16
+        \item Bitwise operations
+        \item Sistema de codificación BCD y ASCII
+        \item Cuántos transistores había en el primer microprocesador y cuántos hay en uno actual
+        \item Quién fue Alan Turing y qué en qué consiste la \textit{Turing Machine}?
+        \item Moore's law
+        \item Dennard Scaling
+    \end{itemize}
+\end{enumerate}
+% \subsection*{Generalidades}
+% \begin{itemize}
+%     \item Las actividades escritas se entregarán en un documento en formato PDF.
+%     \item La evidencia de prácticas se entregará también en un documento en formato PDF, además de un archivo comprimido ZIP que incluya el código fuente, código objeto e imágenes como evidencia de la actividad realizada.
+%     \item En trabajos de investigación es obligatorio incluir las fuentes, el formato es libre pero se recomienda APA.
+% \end{itemize}
+
+% \begin{thebibliography}{10}
+
+%     \bibitem{1} Georg Goubau, \textit{Multi-element monopole antennas}, Wiesbaden, Dieterich'sche Verlagsbuchhandlung, 1976.
+    
+%     \bibitem{2} C.B. Ravipati, S.R. Best, \textit{The Goubau Multi Element Monopole Antenna - Revisited}, Hampton, Richmond upon Thames, 2007.
+    
+%     \bibitem{3} Ivor L. Morrow, Ryan Walker, Mark Finnis, William Whittow, \textit{Investigation of a Disk-Loaded Monopole Antenna with Extended Bandwidth Matching}, Addison Wesley, Massachusetts, 1994.
+    
+%     \bibitem{4} Constantine A. Balanis, \textit{Antenna Theory - Analysis and Design}, Arizona State University, 3rd edition, pp. 611–650, 1986.
+    
+%     \bibitem{5} R. C. Hansen, \textit{Electrically Small, Superdirective and Superconducting Antennas}, Wiley-Interscience, 2006.
+  
+% \end{thebibliography}
+\end{document}
+
+% Esta es una plantilla para poner dos imágenes lado a lado en una sola figura
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}[b]{0.45\textwidth}
+% 			\centering
+% 			\captionsetup{justification=centering}
+% 			\includegraphics[width=0.7\textwidth]{example-image} % Imagen
+% 			\caption{Pie de imagen 1} % Pie de imagen
+% 			\label{img:1} % Etiqueta
+%     \end{subfigure}
+%     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+%       %(or a blank line to force the subfigure onto a new line)
+%     \begin{subfigure}[b]{0.45\textwidth}
+% 			\centering
+% 			\captionsetup{justification=centering}
+% 			\includegraphics[width=0.7\textwidth]{example-image} % Imagen
+% 			\caption{Pie de imagen 2} % Pie de imagen
+% 			\label{img:2} % Etiqueta
+%     \end{subfigure}
+%     \caption{Este es un ejemplo de figura, con subfiguras.}\label{fig:1} % Pie de figura y etiqueta
+% \end{figure}
+
+% \paragraph{Elaboración del prototipo} Cuando las pruebas y los resultados nos sean satisfactorios y además estos mismos se relacionen con los propuestos en los documentos comenzaremos a hacer simulaciones mas a fondo con la información que nosotros mismos vallamos obteniendo.
+
+% \paragraph{Simulación y resultados} Los resultados de las simulación deberán ser lo mas parecidos a los de los documentos, además intentaremos mejorar estos mismos con lo aprendido en el curso y nuestros conocimientos adquiridos.
+
+% \paragraph{Antena prototipo} Ya que nuestro primer prototipo coincida satisfactoriamente con los documentos además de con los cálculos hechos, tendremos que hacer un modelo definitivo de la antena y este sera el que presentara todos los resultados y mediciones, además de que este sera el que tenga un mejor rendimiento en todos sus parámetros y en base a este prototipo daremos nuestras colusiones finales.
+
+
+% \paragraph{Documentación del trabajo} El ultimo paso a realizar sera la documentación. Conforme vayamos avanzando en la construcción de la antena, se tomara nota de los resultados tanto satisfactorios como erróneos, y de esta forma tener una mejor visualización de como fue avanzando el proyecto y la construcción.
+

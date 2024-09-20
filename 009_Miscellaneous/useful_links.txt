@@ -1,0 +1,13 @@
+https://sourceware.org/binutils/docs-2.21/as/AVR_002dDependent.html#AVR_002dDependent
+https://github.com/matthew-macgregor/avr-assembly-examples
+https://academy.cba.mit.edu/classes/embedded_programming/doc1022.pdf
+https://www.codeproject.com/Articles/712610/AVR-Assembler
+https://redirect.cs.umbc.edu/~tinoosh/cmpe311/notes/AVRAssemblerExamples.pdf
+https://ww1.microchip.com/downloads/en/DeviceDoc/40001917A.pdf - AVR Assembler
+https://github.com/Ro5bert/avra
+https://atmega32-avr.com/explore-avr-assembly-language/
+https://avrdudes.github.io/avrdude/
+https://www.nongnu.org/avr-libc/
+https://gcc.gnu.org/wiki/avr-gcc
+https://www.nongnu.org/avrdude/
+https://gcc.gnu.org/onlinedocs/gcc/

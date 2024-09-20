@@ -1,0 +1,15 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+    \begin{tikzpicture}
+        \draw[thick] (0,0) rectangle (3,1);
+        \draw[thick] (0,1) rectangle (3,3);
+        \draw[thick] (0,3) rectangle (3,8);
+        \node[text width=1.2cm, left] at (0,0.15) {\texttt{0x0000}};
+        \node[text width=1.2cm, left] at (0,1.15) {\texttt{0x00FF}};
+        \node[text width=1.2cm, left] at (0,3.15) {\texttt{0x07FF}};
+        \node[text width=1.2cm, left] at (0,8.15) {\texttt{0xFFFF}};
+        % \draw[orange, ultra thick] (4,0) -- (6,0) -- (5.7,2) -- cycle;
+    \end{tikzpicture}
+\end{document}

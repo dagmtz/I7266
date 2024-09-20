@@ -1,0 +1,231 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[sfmath]{kpfonts}
+\usepackage{helvet}
+%\usepackage{lmodern}
+
+\usetheme{Berlin}
+\usecolortheme{default}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Introduction to embedded systems] %optional
+{Introduction to embedded systems}
+
+\subtitle{Embedded systems, microprocessors and microcontrollers}
+
+\author{Daniel Giovanni Martínez Sandoval}
+
+\institute[CUCEI - UDG]
+{
+  \textsc{
+  Centro Universitario de Ciencias Exactas e Ingenierías\\
+  Universidad de Guadalajara
+  }
+}
+
+\date[I7266 - 24B] % (optional)
+{\footnotesize I7266 - Programación de Sistemas Embebidos - 2024B }
+
+\logo{\includegraphics[height=15mm]{logo_udg_color.eps}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{What is an \textit{embedded system}?}
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Embedded systems everywhere}
+Embedded systems are a little bit hard to define. This is because the applications for embedded systems has changed over time and has become very broad.\\[5mm] \pause
+If we say that embedded systems are computer systems that make part of bigger electronic or mechanical systems, and that they have a dedicated function or purpose, how many devices come to your mind?
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Embedded systems everywhere}
+  Some areas full of embedded systems, in fact, are: \pause
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item<2-> Consumer Electronics
+      \item<3-> Home Appliances
+      \item<4-> Automotive
+      \item<5-> Industrial Applications
+      \item<6-> Medical Devices
+      \item<7-> Telecommunications
+    \end{itemize} 
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item<8-> Aerospace and Defense
+      \item<9-> Office Automation
+      \item<10-> Security Systems
+      \item<11-> Smart Home Devices
+      \item<12-> Wearable Devices
+    \end{itemize}
+  \end{columns}
+  \end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{A broad definition}
+  Some of this areas contain devices that can defy the definition we were using.\\[5mm] \pause
+  Think like this: if embedded systems have a dedicated function or purpose, is a cellphone or a tablet an embedded system?\\[5mm] \pause
+  They may fundamentally have components that many other embedded systems have, but they, in contrast to themselves in the past, have not just the purpose of communicating people via voice calls or messages, they are also entretainment devices, and have many more functionalities.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{A broad definition}
+  What is then an \textit{embedded system}?\\[5mm] \pause
+  Well, the initial definition in fact is not really wrong. It's just broad, but not wrong. Here is the initial definition and some others that we can find in selected books on embedded systems.
+  \begin{itemize}
+    \item An embedded system is a special-purpose computer system designed to perform one or a few dedicated functions, often with real-time computing constraints. It is usually embedded as part of a complete device including hardware and mechanical parts.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+\end{document}
+
+
+% %---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Frame title}
+%   % Body
+% \end{frame}
+% %---------------------------------------------------------
+% %---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Embedded systems everywhere}
+%   Embedded systems are a little bit hard to define. This is because the applications for embedded systems has changed over time and has become very broad.\\[5mm] \pause
+%   If we say that embedded systems are ``small'' computer systems that make part of bigger electronic or mechanical systems, how many devices come to your mind?
+%   \end{frame}
+  
+%   %---------------------------------------------------------
+%   \begin{frame}
+%     \frametitle{Embedded systems everywhere}
+%     Some areas full of embedded systems, in fact, are: \pause
+%     \begin{columns}
+%       \begin{column}{0.5\textwidth}
+%         \begin{itemize}
+%           \item<2-> Consumer Electronics
+%           \item<3-> Home Appliances
+%           \item<4-> Automotive
+%           \item<5-> Industrial Applications
+%           \item<6-> Medical Devices
+%           \item<7-> Telecommunications
+%         \end{itemize}
+%       \end{column}
+%       \begin{column}{0.5\textwidth}
+%         \begin{center}
+%           \begin{itemize}
+%             \item<8-> Aerospace and Defense
+%             \item<9-> Office Automation
+%             \item<10-> Security Systems
+%             \item<11-> Smart Home Devices
+%             \item<12-> Wearable Devices
+%           \end{itemize}
+%         \end{center}
+%       \end{column}
+%     \end{columns}
+%     \end{frame}
+  
+%   %---------------------------------------------------------
+  
+  
+%   %---------------------------------------------------------
+%   %Example of the \pause command
+%   \begin{frame}
+%   In this slide \pause
+  
+%   the text will be partially visible \pause
+  
+%   And finally everything will be there
+%   \end{frame}
+%   %---------------------------------------------------------
+  
+%   \section{Second section}
+  
+%   %---------------------------------------------------------
+%   %Highlighting text
+%   \begin{frame}
+%   \frametitle{Sample frame title}
+  
+%   In this slide, some important text will be
+%   \alert{highlighted} because it's important.
+%   Please, don't abuse it.
+  
+%   \begin{block}{Remark}
+%   Sample text
+%   \end{block}
+  
+%   \begin{alertblock}{Important theorem}
+%   Sample text in red box
+%   \end{alertblock}
+  
+%   \begin{examples}
+%   Sample text in green box. The title of the block is ``Examples".
+%   \end{examples}
+%   \end{frame}
+%   %---------------------------------------------------------
+  
+  
+%   %---------------------------------------------------------
+%   %Two columns
+%   \begin{frame}
+%   \frametitle{Two-column slide}
+  
+%   \begin{columns}
+  
+%   \column{0.5\textwidth}
+%   This is a text in first column.
+%   $$E=mc^2$$
+%   \begin{itemize}
+%   \item First item
+%   \item Second item
+%   \end{itemize}
+  
+%   \column{0.5\textwidth}
+%   This text will be in the second column
+%   and on a second tought this is a nice looking
+%   layout in some cases.
+%   \end{columns}
+%   \end{frame}
+%   %---------------------------------------------------------
+  

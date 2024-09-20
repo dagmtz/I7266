@@ -1,0 +1,240 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla para reporte en LaTeX
+% Por Daniel Martínez
+% dag.mtz.97@gmail.com
+%
+%
+% Basado en:
+%
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Declarar el tipo de documento
+\documentclass[10pt,letterpaper]{article} 
+
+% Paquetes para idioma, carácteres y símbolos
+\usepackage[T1]{fontenc}
+% \usepackage[spanish]{babel}
+% \usepackage{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Tipo de letra 
+% \usepackage{courier}
+\usepackage{iwona}
+% \usepackage{tgbonum}
+% \usepackage{tgadventor}
+
+% Márgenes, figuras, gráficos, tablas, listas
+\usepackage[top=1.2in, bottom=1.2in, left=1.5in, right=1.5in]{geometry}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{enumitem}
+% \usepackage{epstopdf}
+%\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+% \usepackage{multirow}
+% \usepackage{textcomp}
+
+%\usepackage{mathtools}
+\usepackage{siunitx}
+%\usepackage{mathrsfs}
+
+
+% Otros
+\usepackage[obeyspaces]{url}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+% \usepackage[os=win]{menukeys}
+% \usepackage{biblatex}
+% \addbibresource{sample.bib}
+
+% \usepackage{fancyhdr}
+% \usepackage{listingsutf8}
+
+% Configuraciones 
+\hypersetup{
+    colorlinks=true,
+    filecolor=black,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+% \setlength{\headheight}{16pt}
+\title{Software development environment setup guide for 8-bit AVR microcontrollers using avr-gcc.}
+\author{Daniel Giovanni Martínez Sandoval\\ \small{\href{mailto:dagmtzs@gmail.com}{dagmtzs@gmail.com}}}
+\date{February 2024}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio del documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\newpage
+% \vfill
+% Índices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents	
+% \listoffigures	
+% \vfill
+
+% Contenido
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+This guide is intended to show the process of installation of the tools required to develop software for the 8-bit AVR microcontrollers. The guide and the examples provided here are particularly, but not exclusively, oriented to the ATmega328P. This guide is meant to help, but not to solve all the problems that may arise during installation, thus, some changes might be needed to make everything work depending on your system and the devices you decide to use, but this info can be easily found on the internet. The documentation for the software and hardware mentioned in this document can be found at the end of it. 
+
+% For easier recognition, filenames as well as file paths will be colored in {\color{ForestGreen}ForestGreen}, links to webpages will be colored in {\color{blue}blue} and links to images will be colored in {\color{red}red}.
+For easier recognition, filenames as well as file paths will be colored in {\color{ForestGreen}green} and links to webpages will be colored in {\color{blue}blue}.
+
+\section{Requirements}
+This guide is made for laptops running Windows 10 (and later). Minimum requirements have not been defined but almost any modern system (probably from 2015 and on) in good conditions should work just fine. For the hardware, the following is needed:
+\begin{itemize}
+    \item A programmer supported by avrdude, in this case, the USBasp (see other supported devices).
+    \item An 8-bit AVR microcontroller, in my case, the ATmega328P (see other supported devices).
+    \item The circuitry needed for the microcontroller to work. For the ATmega328P, I used: a breadboard, a \SI{16}{\mega\hertz} crystal oscillator, two \SI{22}{\pico\farad} capacitors, a pushbutton, a \SI{10}{\kilo\ohm} resistor and some wire for the breadboard.
+\end{itemize}
+
+\section{Installing software tools}
+To set up a basic development environment, I would suggest having the following software tools:
+\begin{itemize}
+    \item A text editor, preferably, one intended for software development in C language.
+    \item A compiler, and its related tools and libraries.
+    \item A programmer.
+\end{itemize}
+My personal preference in a Windows machine is \textit{VS Code} for the text editor, and the tools that I would recommend are the \textit{AVR 8-bit GNU Toolchain} and \textit{AVRDUDE} as the programmer.
+
+\subsection{VisualStudio Code}
+Download it from \href{https://code.visualstudio.com/Download}{this link} and follow the installer instructions.
+
+\subsection{AVR 8-bit Toolchain}
+This toolchain can be obtained from the Microchip website in \href{https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers}{this link}. Select the download corresponding to \textbf{AVR 8-Bit Toolchain (Windows)}. Once downloaded:
+\begin{enumerate}
+    \item Right-click your downloaded ZIP file and select \textit{Extract All}.
+    \item In the new window, leave the defaults and click \textit{Extract}.
+    \item Change the name of the resulting folder to {\color{ForestGreen}avr8-gnu-toolchain}. 
+    \item Move the folder to {\color{ForestGreen}C:\textbackslash Program Files\textbackslash}.
+\end{enumerate}
+
+\subsection{AVRDUDE}
+This programmer can be downloaded from \href{https://github.com/avrdudes/avrdude/releases}{this link}. In the same fashion as the AVR Toolchain:
+\begin{enumerate}
+    \item Right-click your downloaded ZIP file and select \textit{Extract All}.
+    \item In the new window, leave the defaults and click \textit{Extract}.
+    \item Change the name of the resulting folder to {\color{ForestGreen}avrdude}. 
+    \item Move the folder to {\color{ForestGreen}C:\textbackslash Program Files\textbackslash}.
+\end{enumerate}
+
+\subsection{Zadig}
+This program installs the required driver for the USBasp programmer, if you’re not using this programmer, you may omit this installation, but you have to check if you need any other drivers. In my setup, this is mandatory, so download it from \href{https://zadig.akeo.ie/}{this link}. After downloading:
+\begin{enumerate}
+    \item Connect your USBasp.
+    \item Double-click the downloaded application.
+    \item You might need administrator rights to allow program to install the driver. Allow it.
+    \item A window should open, and in the dropdown menu, the option \textbf{USBasp} must be selected, otherwise, check that your USBasp is connected or look for help on the web.
+    \item If everything is fine up to this point, click \textbf{Install WCID}.
+\end{enumerate}
+
+\subsection{Environment Variables}
+To be able to use the compiler and programmer you just installed, you need to update you Environment Variables in the following manner:
+\begin{enumerate}
+    \item Click the Windows menu (or press the Windows key in your keyboard) and type \textit{variables}.
+    \item One of the results should be \textit{Edit the system environment variables}, click it.
+    \item In the new window, titled \textit{System Properties}, click the button \textit{Environment Variables}, almost at the bottom of the window.
+    \item In the next window, you should see two fields, one for \textit{User variables for ...} and one for \textit{System variables}. Under \textit{User variables for ...}, look for the variable called \textbf{Path}.
+    \begin{enumerate}
+        \item If you don't have a \textbf{Path} variable, click \textit{New...} 
+        \begin{enumerate}
+            \item In the \textit{New User Variable} window, under \textit{Variable name}, write \textbf{Path}
+            \item Under \textit{Variable value}, write {\color{ForestGreen}C:\textbackslash Program Files\textbackslash avr8-gnu-toolchain\textbackslash bin}.
+            \item Click \textit{OK}.
+        \end{enumerate}
+        \item If you already have a \textbf{Path} variable, select it and click \textit{Edit...}. 
+        \begin{enumerate}
+            \item In the new window, click \textit{New}.
+            \item In the active space, write {\color{ForestGreen}C:\textbackslash Program Files\textbackslash avr8-gnu-toolchain\textbackslash bin}.
+        \end{enumerate}
+    \end{enumerate}
+    \item Once the AVR Toolchain folder has been added to the \textbf{Path} variable, repeat the step 4b to add the AVRDUDE folder so your \textbf{Path} has these two directories added:
+    \begin{itemize}
+        \item {\color{ForestGreen}C:\textbackslash Program Files\textbackslash avr8-gnu-toolchain\textbackslash bin}
+        \item {\color{ForestGreen}C:\textbackslash Program Files\textbackslash avrdude\textbackslash}
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Additional configuration}
+In order to make the development workflow a smoother experience, I'd recommend following the instructions from \href{https://www.tonymitchell.ca/posts/use-vscode-with-avr-toolchain/}{this article} to add some very useful functionalities to VS Code.
+
+\section{Testing the setup}
+Once the environment is set up, you can follow these steps to create, compile and upload a program to your microcontroller:
+\begin{enumerate}
+    \item Create a folder to store your AVR projects, and inside it, create a folder for this example program.
+    \item Open VS Code and open the folder you just created. (File -> Open Folder).
+    \item In the VS Code file explorer, create a new file, name it: {\color{ForestGreen}\texttt{main.c}}.
+    \item From my GitHub page, open my HelloWorld example following \href{https://github.com/dagmtz/I7266/blob/master/001_Assets/004_Examples/mega328P/001_HelloWorld/main.c}{this link}.
+    \item Copy my code and paste it into your newly created file in VS Code.
+    \item Save the file.
+    \item Connect the USBasp to your microcontroller (and to your PC if it is not connected already).
+    \item In the VS Code file explorer, right-click the folder you are working in and select the option \textit{Open in Integrated Terminal}.
+    % \item In the Integrated Terminal, type \texttt{avr-gcc}. The output should show the following text:\\ \texttt{avr-gcc.exe: fatal error: no input files\\ compilation terminated}
+    % \item In the Integrated Terminal, type \texttt{avrdude}. The ouput should show, at the end, the version of AVRDUDE. Mine says:\\ \texttt{avrdude version 7.3, https://github.com/avrdudes/avrdude}.
+    \item In the Integrated Terminal, execute the following commands: 
+    \begin{itemize}
+        \item \texttt{avr-gcc main.c -mmcu=atmega328p -o main.elf}
+        \item \texttt{avr-objcopy -O ihex main.elf main.hex}
+        \item \texttt{avrdude -p atmega328p -c usbasp -U flash:w:main.hex}
+    \end{itemize}
+\end{enumerate}
+The result should be your microcontroller programmed with my code.
+
+\subsection{Troubleshooting}
+Here are some things that can make this process fail:
+\begin{itemize}
+    \item Your system might not recognize the commands you write immediately, you can try restarting programs, logging out and back in to your Widows user account or if that doesn't work, you might restart your computer.
+    \item Typos might prevent your commands from working, or even might cause damage to your microcontroller, double check the commands you write.
+    \item One of the most common problems are wires and connections. When connecting each signal manually:
+    \begin{itemize}
+        \item Take special care in labeling or color-coding your long wires so you don't mix them up.
+        \item Make sure you identify correctly the pins of your microcontroller. 
+        \item Check the values of your crystal oscillator and capacitors.
+        \item Check specially the power connections to the programmer, and make sure they are close to the microcontroller, i.e., try to minimize the length of the power lines to the microcontroller power pins.
+        \item Sometimes the uploading speed might be too high for certain setups, so you can append to the \texttt{avrdude} command the option \texttt{-B125kHz}, or even \texttt{-B32kHz}.
+    \end{itemize}
+    
+\end{itemize}
+
+\section{Useful links}
+\begin{itemize}
+    \item \href{https://avrdudes.github.io/avrdude/}{AVRDUDE User Manual}
+    \item \href{https://www.nongnu.org/avr-libc/}{AVR Libc Home Page}
+    \item \href{https://gcc.gnu.org/wiki/avr-gcc}{avr-gcc Toolchain Wiki}
+    \item \href{https://www.nongnu.org/avrdude/}{AVRDUDE Home Page}
+    \item \href{https://gcc.gnu.org/onlinedocs/gcc/}{GCC Online Documentation}
+\end{itemize}
+
+\end{document}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\captionsetup{justification=centering}
+			\includegraphics[width=0.7\textwidth]{example-image} % Imagen
+			\caption{Pie de imagen 1} % Pie de imagen
+			\label{img:1} % Etiqueta
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\captionsetup{justification=centering}
+			\includegraphics[width=0.7\textwidth]{example-image} % Imagen
+			\caption{Pie de imagen 2} % Pie de imagen
+			\label{img:2} % Etiqueta
+    \end{subfigure}
+    \caption{Este es un ejemplo de figura, con subfiguras.}\label{fig:1} % Pie de figura y etiqueta
+\end{figure}
