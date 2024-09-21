@@ -5,7 +5,10 @@
 ; Author : dagmtz
 ;
 
-.include "m32Adef.inc"
+;.include "m32Adef.inc"
+
+.equ	DDRD	= 0x11
+.equ	PORTD	= 0x12
 
 ; Replace with your application code
 Start:

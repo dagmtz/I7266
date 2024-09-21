@@ -1,0 +1,2 @@
+avrasm2 -fI -o main.hex main.asm  
+avrasm2 -fI -o main.hex -m main.map -l main.lss -W+ie main.asm  
