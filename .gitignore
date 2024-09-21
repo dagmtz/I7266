@@ -31,12 +31,19 @@
 *.dylib
 
 # Executables
-*.exe
+# *.exe
 *.out
 *.app
 *.i*86
 *.x86_64
-*.hex
+# *.hex
+
+### avr asm ###
+# avr-gcc results
+*.i
+*.s
+*.lss 
+*.map 
 
 ### VS Code ###
 *.code-workspace
