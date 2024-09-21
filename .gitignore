@@ -38,6 +38,10 @@
 *.x86_64
 *.hex
 
+### VS Code ###
+*.code-workspace
+**/.vscode
+
 ### TeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux

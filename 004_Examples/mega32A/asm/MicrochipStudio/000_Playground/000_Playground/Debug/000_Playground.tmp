@@ -1,0 +1,28 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega32A"</DEVICE>
+ <WORKING_DIR>D:\Git\Windows\I7266\004_Examples\mega32A\asm\MicrochipStudio\000_Playground\000_Playground\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>D:\Git\Windows\I7266\004_Examples\mega32A\asm\MicrochipStudio\000_Playground\000_Playground\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m32Adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>D:\Git\Windows\I7266\004_Examples\mega32A\asm\MicrochipStudio\000_Playground\000_Playground\Debug\000_Playground.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>000_Playground.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>000_Playground.map</FILE>
+  <FILE>000_Playground.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <Start><FILE>D:\Git\Windows\I7266\004_Examples\mega32A\asm\MicrochipStudio\000_Playground\000_Playground\main.asm</FILE><LINE>11</LINE></Start>
+  <End><FILE>D:\Git\Windows\I7266\004_Examples\mega32A\asm\MicrochipStudio\000_Playground\000_Playground\main.asm</FILE><LINE>15</LINE></End>
+ </LABELS>
+</ASSEMBLER_INFO>
