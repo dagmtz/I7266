@@ -40,7 +40,6 @@
 
 ### VS Code ###
 *.code-workspace
-**/.vscode
 
 ### TeX ###
 ## Core latex/pdflatex auxiliary files:
