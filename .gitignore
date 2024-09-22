@@ -1,3 +1,6 @@
+## MyExamples
+**/Executables/*.c
+
 ### C ###
 # avr-gcc results
 *.i
