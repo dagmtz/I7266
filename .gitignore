@@ -1,5 +1,5 @@
 ## MyExamples
-**/Executables/**/*.c
+004_Code/**/src
 
 ### C ###
 # avr-gcc results
