@@ -3,6 +3,8 @@
 %\usepackage[sfmath]{kpfonts}
 \usepackage{helvet}
 %\usepackage{lmodern}
+\usepackage{siunitx}
+\usepackage{tikz}
 
 \usetheme{Berlin}
 \usecolortheme{default}
@@ -28,7 +30,14 @@
 \date[I7266 - 24B] % (optional)
 {\footnotesize I7266 - Programación de Sistemas Embebidos - 2024B }
 
-\logo{\includegraphics[height=15mm]{logo_udg_color.eps}}
+\titlegraphic { 
+  \begin{tikzpicture}[overlay,remember picture]
+  \node[right=-2.5cm] at (current page.345){
+    \includegraphics[height=20mm]{logo_udg_color.eps}
+  };
+  \end{tikzpicture}
+}
+%\logo{\includegraphics[height=15mm]{logo_udg_color.eps}}
 
 %End of title page configuration block
 %------------------------------------------------------------
@@ -307,25 +316,19 @@ Let us explore some of these methods.
 
 %---------------------------------------------------------
 \begin{frame}
-  \frametitle{Static vs. Dynamic memory allocation}
-  Embedded systems often favor static memory allocation over dynamic allocation (e.g., malloc/free in C) to avoid issues such as memory fragmentation and unpredictable behavior. Static allocation is predefined at compile time, while dynamic allocation can lead to inefficiencies in systems with limited memory.\\ \pause
-  Also important to consider is the stack and heap management. Ususally, the stack holds temporary variables for function calls, while the heap is used for dynamically allocated memory.
-\end{frame}
-%---------------------------------------------------------
-
-%---------------------------------------------------------
-\begin{frame}
+  \frametitle{Memory map (cont.)}
+  It is important to note that the way the memory is organized in a computer system (the memory architecture) is defining the way the memory map will work, and, for example, how many memory maps we will have. \\ \pause
   Now, how can we use that information to efficiently store information in an embedded system? And why should we care about that?
 \end{frame}
 %---------------------------------------------------------
 
-\section{How do we tell a microcontroller to store data?}
+\section{How do we tell a microcontroller how to store data?}
 \subsection{Data types}
+
 %---------------------------------------------------------
 \begin{frame}
   \frametitle{Why do data types exist in programming?}
-  Embedded systems have limited resources, and although dependant on the intended application, they usually have small amounts of memory space compared to regular computers.\\ \pause
-  Since we have limited memory, we want to have exceptional control over how the memory is used. \\ \pause
+  Embedded systems have limited resources, and although dependant on the intended application, they usually have really small amounts of memory space compared to regular computers. \pause Since we have limited memory, we want to have exceptional control over how the memory is used. \\ \pause
   Most programming languages include some level of control over this, specially the mid and low-level languages. This enables programmers to choose better ways to manage the memory, but also sometimes makes it harder to program, since you have to take into account more details about it.
 \end{frame}
 %---------------------------------------------------------
@@ -333,14 +336,171 @@ Let us explore some of these methods.
 %---------------------------------------------------------
 \begin{frame}
   \frametitle{Data types in C}
-  In the C language, we have different ways to describe how we want to use memory in our microcontroller or microprocessor. We will now explore some of the basic data types we will use in the course.
+  C was invented as a high-level language, meaning it provided a high level of abstraction and was easily understandable by most people related to the area. With time, computer systems have evolved so complex that it does not seem that easy to understand nowadays, but it is still considered a mid-level language. \\ \pause 
+  It is important to remark that this language is widely used in embedded systems due to its efficiency and control over hardware, thus, it is crucial to understand data types and memory in order to write optimized code and manage limited resources. 
 \end{frame}
 %---------------------------------------------------------
 
 %---------------------------------------------------------
 \begin{frame}
-  \frametitle{Primitive data types}
-  Primitive data types refer to the most basic data types we wan work with in the C language. These are: integers (int), characters (char), floating poing (float) and double precision (double).
+  \frametitle{Data types in C (cont.)}
+  In the C language, we have different ways to describe how we want to use memory in our microcontroller or microprocessor. There are, as well, multiple ways to classify data types, but among them we will care mainly about two things: 
+  \begin{itemize}
+    \item What kind of data can they store?
+    \item What size are they?
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Data types in C (cont.)}
+  Primary data types are the building blocks for more complex methods of storing data. Our most basic components are the following:
+  \begin{center}
+    \begin{tabular}{||c | c | c | c||} 
+      \hline
+      Name & Bytes & Range & Format specifier \\ 
+      \hline\hline
+      %char    & 1     & $-128 \text{ to } 127$ & \%c \\ 
+      char    & 1     & \num{-128} to \num{127} & \%c \\ 
+      \hline
+      int     & 4     & \num{-2147483648} to \num{2147483647} & \%d \\
+      \hline
+      float   & 4     & \num{1.21e-38} to \num{3.4e38}  & \%f \\
+      \hline
+      double  & 8     & \num{1.7e-308} to \num{1.7e308} & \%lf \\
+      \hline      
+    \end{tabular}  
+  \end{center}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Data types in C (cont.)}
+  The usual way to use them is like this:
+  \begin{itemize}
+    \item \textbf{char:} to store characters, sin ASCII uses 1 byte per character.
+    \item \textbf{int:} to store integers.
+    \item \textbf{float:} to store numbers with decimals.
+    \item \textbf{double:} to store really big numbers with certain precision.
+  \end{itemize}  
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Integers in C}
+  That doesn't mean we're limited to those use cases, in fact, let us explore a little bit further how integers are stored:
+  % Here I'd explain how integers are stored and different types of integers
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Integers in C (cont.)}
+  % Here I'd explain how integers can have different sizes
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Integers in C (cont.)}
+  % Here I'd explain how integers can have different signedness
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Floating point numbers)}
+  % Floating-point numbers are used to represent real numbers, especially when dealing with very large or small values, or fractions. They follow the IEEE 754 standard and are made up of three parts:
+  % Sign (S): Determines if the number is positive or negative.
+  % Exponent (E): Adjusts the range of the number (powers of 2).
+  % Mantissa (M): Holds the significant digits of the number.
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Floating point numbers (cont.)}
+  % Here I'd explain how integers can have different signedness
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Floating point numbers (cont.)}
+  % To represent -13.25: (single precission example)
+
+  % Binary: -1101.01 = -1.10101 × 2^3
+  % Sign: 1 (negative)
+  % Exponent: 3 (biased by 127, so stored as 130, or 10000010 in binary)
+  % Mantissa: 10101, padded to 23 bits.
+\end{frame}
+%---------------------------------------------------------
+
+% A floating-point number is represented as:
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Arrays}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Arrays (cont.)}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Enums (cont.)}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Enums (cont.)}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Structs}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Structs (cont.)}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Type qualifiers}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Memory addresses}
+  We have discussed about the parts that make up the memory of a microcontroller. In simple terms: 
+  \begin{itemize}
+    \item \textbf{Program Flash (ROM):} Stores the firmware.
+    \item \textbf{RAM:} Stores data generated and used by the firmware.
+    \item \textbf{EEPROM:} Stores persistent data.
+  \end{itemize}
+  We have also discussed about the memory map and how it depends on the system architecture. 
 \end{frame}
 %---------------------------------------------------------
 
@@ -354,6 +514,29 @@ Let us explore some of these methods.
   Also, endianness refers to the order of multi-byte datatypes. We have Little-Endian and Big-Endian.
 \end{frame}
 %---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Pointers}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Pointers (cont.)}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Pointers (cont.)}
+  % Here I'd explain how floating point numbers are stored
+\end{frame}
+%---------------------------------------------------------
+
+
 
 \end{document}
 
