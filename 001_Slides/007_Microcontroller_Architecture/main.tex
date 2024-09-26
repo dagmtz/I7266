@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 %\usepackage[sfmath]{kpfonts}
 \usepackage{helvet}
+\usepackage[euler]{textgreek}
 %\usepackage{lmodern}
 \usepackage{siunitx}
 \usepackage{tikz}
@@ -92,53 +93,117 @@
 
 %---------------------------------------------------------
 \begin{frame}
-\frametitle{Definition of architecture}
+  \frametitle{Definition of architecture}
+  ``Architecture'' is a broad term in computer science, but we will stick to this definition: \pause
   \begin{block}{Architecture}
-    Architecture describes the internal organization of a computer in an abstract way; that is, it deﬁnes the capabilities of the computer and its programming model.\cite{clements} It outlines how a computer's hardware components interact and work together to execute programs and process data.   
+    Architecture describes the internal organization of a computer in an abstract way; that is, it deﬁnes the capabilities of the computer and its programming model.\cite{clements} \pause
   \end{block}
-\end{frame}
-%---------------------------------------------------------
+  Basically, it is an abstraction that outlines how a computer's hardware components interact and work together to process data. Of course it is important. But why?
+  \end{frame}
+  %---------------------------------------------------------
 
 %---------------------------------------------------------
 \begin{frame}
-  \frametitle{}
-  In embedded systems, architecture plays a crucial role because these systems are mostly designed for specific tasks rather than general-purpose computing. Some things to keep in mind when choosing an architecture are:
+  \frametitle{Importance of architecture}
+  In embedded systems, architecture plays a crucial role because these systems are mostly designed for specific tasks rather than general-purpose computing. Some things to take into account when choosing an architecture are:\pause
   \begin{itemize}
-    \item <1-> \textbf{Power consumption:} Many embedded systems operate on battery power. A microcontroller packed with features but with a high current consumption is not always feasible for battery-operated systems. 
-    \item <2-> \textbf{Cost and size:} Choosing a microcontroller with just enough features to develop the intended functionality is key to saving money, but also in some cases the size, which in turn also reduces the cost.
-    \item <3-> \textbf{Performance and memory:} Depending on the application, some devices might only run certain OS which is targeted for a specific arquitechture, or maybe they need to be compatible with external memory. 
+    \item <2-> \textbf{Power consumption:} Many embedded systems operate on battery power. A microcontroller packed with features but with a high current consumption is not always feasible for battery-operated systems. 
+    \item <3-> \textbf{Cost and size:} Choosing a microcontroller with just enough features to develop the intended functionality is key to saving money, but also in some cases the size, which in turn also reduces the cost.
+    \item <4-> \textbf{Performance and memory:} Depending on the application, some devices might only run certain OS which is targeted for a specific arquitechture, or maybe they need to be compatible with external memory. 
   \end{itemize}
 \end{frame}
 %---------------------------------------------------------
 
 %---------------------------------------------------------
 \begin{frame}
-  \frametitle{Definition of architecture}
-    \begin{block}{Architecture}
-      Architecture describes the internal organization of a computer in an abstract way; that is, it deﬁnes the capabilities of the computer and its programming model.\cite{clements} It outlines how a computer's hardware components interact and work together to execute programs and process data.   
-    \end{block}
-  \end{frame}
-  %---------------------------------------------------------
+  \frametitle{Importance of architecture (cont.)}
+  So, just like buying any other thing, when buying a microcontroller to design an embedded system, you should take into account the size, your budget, the style, among many other things. But the thing with architecture in computer science and embedded systems is that saying "architecture" is really, really broad. \pause \\[5mm]
+  Why? you may ask... Well, in the beginning we had very simple circuits compared to those nowadays. We also had one way to program them: 1's and '0s. But today we have a huge variety of variables, even with circuits themselves, since we're not limited to Microcontrollers(\textmu Cs or MCUs) and Microprocessors(\textmu Ps), we also have Digital Signal Processors (DSPs), Field Programmable Gate Arrays (FPGAs), System-on-Chips (SoCs), and Application Specific Integrated Circuits (ASICS).  
+\end{frame}
+%---------------------------------------------------------
 
-  %---------------------------------------------------------
+%---------------------------------------------------------
 \begin{frame}
-  \frametitle{ISA}
+  \frametitle{Different kinds of architectures}
+  I said that architecture is a broad term, and is not only because of the current complexity of computational systems, but also because of the many variants of architecture or the many ways that we can organize components inside a microcontroller in order to understand its functionality. \pause
+
+  So, let us explore some different kinds of architectures.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{ISAs}
     \begin{block}{Instruction Set Architecture}
-      An Instruction Set Architecture (ISA) is part of the abstract model of a computer that defines how the CPU is controlled by the software. The ISA acts as an interface between the hardware and the software, specifying both what the processor is capable of doing as well as how it gets done. \cite{clements}
-    \end{block}
+      An Instruction Set Architecture (ISA) is part of the abstract model of a computer that defines how the CPU is controlled by the software. The ISA acts as an interface between the hardware and the software, specifying both what the processor is capable of doing as well as how it gets done. \cite{ISA} \pause
+    \end{block} 
     The ISA provides the only way through which a user is able to interact with the hardware. It can be viewed as a programmer's manual because it's the portion of the machine that's visible to the assembly language programmer, the compiler writer, and the application programmer. 
   \end{frame}
-  %---------------------------------------------------------
+%---------------------------------------------------------
 
-  %---------------------------------------------------------
+%---------------------------------------------------------
 \begin{frame}
-  \frametitle{Definition of architecture}
-    \begin{block}{Architecture}
-      Architecture describes the internal organization of a computer in an abstract way; that is, it deﬁnes the capabilities of the computer and its programming model.\cite{clements} It outlines how a computer's hardware components interact and work together to execute programs and process data.   
-    \end{block}
-  \end{frame}
-  %---------------------------------------------------------
+  \frametitle{ISAs (cont.)}
+  Some popular ISAs are: \pause
+  \begin{itemize}
+    \item <2-> \textbf{ARM:} Used in smartphones. Based in RISC.
+    \item <3-> \textbf{x86:} Used in desktop and laptop computers. Is a CISC.
+    \item <4-> \textbf{RISC-V:} An \textit{open-source} ISA.
+    \item <5-> \textbf{MIPS:} Based in RISC and used in many network systems.
+    \item <6-> \textbf{AVR:} 8-bit RISC, which we will explore and use in this course.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
 
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Microarchitecture}
+  \begin{block}{Microarchitecture}
+    Microarchitecture is the implementation of the ISA in hardware. It defines how a processor's internal components are organized and interact to execute the instructions described by the ISA.   
+  \end{block}
+  ISAs can be executed in different implementations of hardware, so, a microarchitecture (or \textmu arch) is the description of that exact thing. 
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Microarchitecture (cont.)}
+%   begin{columns}[T]
+%     \begin{column}{.5\textwidth}
+%      \begin{block}{Microarchitectures are usually represented as diagrams that describe the interconnections of the various microarchitectural elements of the machine, which may include gates, registers, arithmetic ALUs and even larger elements. These diagrams generally also include the buses.}
+% % Your text here
+%     \end{block}
+%     \end{column}
+%     \begin{column}{.5\textwidth}
+%     \begin{block}{Your image}
+% % Your image included here
+%     \captionsetup{justification=centering}
+% 			\includegraphics{328p_uarch.png} % Imagen
+% 			\caption{Pie de imagen 1} % Pie de imagen
+% 			\label{img:1} % Etiqueta
+%     \end{block}
+%     \end{column}
+%   \end{columns}
+  
+% \end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Microarchitecture (cont.)}
+  Microarchitectures are usually represented as diagrams that describe the interconnections of the various microarchitectural elements of the machine, which may include gates, registers, arithmetic ALUs and even larger elements. These diagrams generally also include the buses.
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Microarchitecture (cont.)}
+  \centering
+  \includegraphics[height=0.9\textheight]{328p_uarch.png}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
 \begin{frame}
     \frametitle{References}
     % This prints the bibliography on the slide

@@ -22,8 +22,10 @@ int main()
 	while (1)
 	{	
         // Toggle PORTD bit 7
-		PORTD ^= (1 << PORTD7); 
-        _delay_ms(500);
+		//PORTD ^= (1 << PORTD7); 
+		PORTD = 0;
+        //_delay_ms(500);
 	}
 	
 }
+
