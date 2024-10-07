@@ -70,6 +70,8 @@
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Comando para líneas horizontales
 
+\sisetup{separate-uncertainty=true}
+
 % \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 % \definecolor{mylilas}{RGB}{170,55,241}
 
@@ -89,8 +91,8 @@
     
     \HRule \\[0.3cm]
     { 
-        \LARGE \textbf{Ejercicio 1} \\[0.3cm]
-        \large \textbf{Repaso de programación en C} \\[0.3cm]
+        \LARGE \textbf{Práctica 2} \\[0.3cm]
+        \large \textbf{Hello World en microcontroladores} \\[0.3cm]
     }
     \HRule \\[2cm]
     
@@ -118,52 +120,43 @@
 
 % Contenido
 
-\section{Indicaciones}
-\begin{enumerate}[label=(\roman*)]
-    \item Realizar las actividades mencionadas a continuación; redactar y subir un reporte en formato PDF en el apartado de Classroom correspondiente.
-\end{enumerate}
 \section{Objetivos}
 \subsection{Generales}
 \begin{enumerate}[label=\arabic*)]
-    \item Que el alumno repase los conocimientos y generalidades del lenguaje C mediante ejercicios sencillos.
+    \item Que el alumno se familiarice con el proceso de programación del microcontrolador que se usará durante el curso.
 \end{enumerate}
 \subsection{Particulares}
 \begin{enumerate}
-    \item Que el alumno desarrolle, en lenguaje C, una serie de programas que pongan a prueba sus conocimientos en temas tales como:
-    \begin{itemize}
-        \item tipos de datos
-        \item variables
-        \item constantes
-        \item entrada y salida estándar de datos en consola
-        \item ciclos
-        \item funciones
-        \item recursividad
-    \end{itemize} 
+    \item Que el alumno desarrolle, en lenguaje C, una serie de programas que fortalezcan los conocimientos básicos de la arquitectura del ATmega328P.
+    \item Que el alumno, al practicar, desarrolle familiaridad hacia la estructura básica de un programa en C orientado a un microcontrolador.
+    \item Que el alumno aprenda a realizar un proceso básico de desarrollo y programación de un microcontrolador.
 \end{enumerate}
 \section{Indicaciones}
 \begin{itemize}
-    \item En el editor de texto de su preferencia, codificar un programa en lenguaje C que realize lo que se indica cada uno de los siguientes enunciados:
+    \item Una vez instalado el entorno de desarrollo descrito en \href{https://github.com/dagmtz/I7266/blob/main/005_Guides/AVR_env_setup_ES/AVR_env_setup_ES.pdf}{este enlace}, y en el editor de texto de su preferencia, codificar un programa en lenguaje C para cada objetivo, de forma que el ATmega328P realize lo que se indica cada uno de los siguientes enunciados:
     \begin{enumerate}[label*=\arabic*.]
-        \item Pedir un número natural al usuario e imprimir la suma de todos los número naturales hasta ese número.
-        \item Pedir un número natural al usuario e imprimir la tabla de multiplicar del 1 al 12 del número ingresado.
-        \item Pedir un número natural al usuario e imprimir el factorial de ese número.
-        \item Pedir dos números naturales al usuario y calcular el MCD (Máximo Común Divisor) entre estos.
-        \item Pedir un número natural al usuario y mostrar si el número es primo o no.
-        \item Pedir un número natural al usuario e imprimir todos los números primos entre 1 y ese número.
-        \item Pedir un número natural al usuario e imprimir la sucesión de Fibonacci hasta el último elemento menor que sea el número ingresado.
-        \item Pedir un número natural al usuario, después, pedir esa cantidad de números reales y calcular el promedio de esos valores ingresados.
+        \item Encender y apagar un LED conectado al pin PC5 del ATmega328P con una frecuencia de \num{1 \pm 0.1}\unit{\hertz}.
+        \item Encender y apagar de manera secuencial cada uno de los pines del puerto C del ATmega328P, cambiando de LED a una frecuencia de \num{1 \pm 0.1}\unit{\hertz}.
+        \item Encender un led en el pin PC5 del ATmega328P y mantenerlo siempre encendido, excepto cuando se presione un pushbutton conectado a pin PD7.
     \end{enumerate}
     \pagebreak
-    \item Para compilar solo se aceptará GCC (MinGW-GCC en Windows), para lo cual se sugiere el siguiente flujo de trabajo:
+    \item Solo se aceptarán las prácticas que se realicen en lenguaje C y compilables con \texttt{avr-gcc}, para lo cual se sugiere el siguiente flujo de trabajo:
     \begin{enumerate}
-        \item Crear una nueva carpeta (sugerencia extra: numerada), por ejemplo: \texttt{014\textunderscore MCD}.
+        \item Crear una nueva carpeta (sugerencia extra: numerada), por ejemplo: \texttt{021\textunderscore Patron1}.
         \item Dentro de la carpeta, colocar el archivo de código fuente correspondiente y nombrarlo \texttt{main.c}.
         \item Copiar la dirección de la carpeta, la cual se puede obtener desde la barra de dirección del explorador de archivos.
         \item Abrir una nueva instancia de Powershell (desde el menú de Windows).
         \item Utilizar el comando: \texttt{cd ``C:\textbackslash direccion\textbackslash de\textbackslash la\textbackslash carpeta''} (substituyendo entre las comillas por la dirección que se copió).
-        \item Dentro de la carpeta, usar el comando \texttt{gcc -Wall main.c -o main.exe} para compilar y generar un ejecutable para Windows.
-        \item Para ejecutar el programa, usar el comando \texttt{.\textbackslash main.exe}.
-        \item \textbf{RECOMENDACIÓN:} en el respositorio de Github de la clase se encontrarán ejecutables que ejemplifiquen cada una de las funcionalidades solicitadas. Adicionalmente, no se recomienda copiar y pegar los comandos aquí mencionados, más bien, escribirlos manualmente en la consola, ya que se pueden copiar de manera errónea debido al formato PDF.
+        \item Dentro de la carpeta, usar los comandos mencionados en la guía:
+        \begin{itemize}
+            \item Para compilar: \\ 
+                \texttt{avr-gcc main.c -mmcu=atmega328p -o main.elf}
+            \item Para convertir a formato intel hex: \\
+                \texttt{avr-objcopy -O ihex main.elf main.hex}
+            \item Para cargar el código al microcontrolador: \\
+                \texttt{avrdude -p atmega328p -c usbasp -U flash:w:main.hex}
+        \end{itemize}
+        \item \textbf{RECOMENDACIÓN:} se sugiere \textbf{NO} copiar y pegar los comandos aquí mencionados, más bien, escribirlos manualmente en la consola, ya que se pueden copiar de manera errónea debido al formato PDF.
     \end{enumerate}
     \item En Classroom, se deberá cargar un reporte de actividad que incluya lo siguiente:
     \begin{enumerate}%[label=(\roman*)]
@@ -175,11 +168,10 @@
         \item Conclusión: un breve texto que señale los resultados y aprendizajes de la actividad.
     \end{enumerate}
 \end{itemize}
-Una vez instaladas las herramientas para compilar en C, se sugieren seguir los siguientes pasos:
 \subsection*{Generalidades}
 \begin{itemize}
     \item Las actividades escritas se deberán cargar a Classroom en un documento en formato PDF.
-    \item Los archivos de código fuente y los binarios generados se deberán cargar a Classroom en su formato nativo, en caso de ser múltiples, se pueden cargar en un formato comprimido (por ejemplo: zip).
+    \item Los archivos de código fuente también se deberán cargar a Classroom en su formato nativo, en caso de ser múltiples, se pueden cargar en un formato comprimido (por ejemplo: zip).
     \item Las actividades no serán válidas hasta que se entreguen todos los requisitos, además, los archivos de código fuente que se entreguen deberán ser compilables sin errores (warnings sí están permitidas) y los binarios deberán realizar la funcionalidad descrita por la actividad. 
     \item El profesor se reserva el derecho de solicitar (ya sea de manera grupal o individual) que los alumnos presenten su actividad funcional como parte de la evaluación de la misma actividad.
     \item En trabajos que incluyan investigación, es obligatorio añadir las fuentes; el formato es libre, pero se recomienda IEEE o APA.

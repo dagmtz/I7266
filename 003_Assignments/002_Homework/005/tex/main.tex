@@ -100,12 +100,12 @@
     
     \HRule \\[0.3cm]
     { 
-        \LARGE \textbf{Tarea 4} \\[0.3cm]
-        \large \textbf{Repaso de conceptos de microcontroladores} \\[0.3cm]
+        \LARGE \textbf{Tarea 5} \\[0.3cm]
+        \large \textbf{Memorias y variables} \\[0.3cm]
     }
     \HRule \\[2cm]
     
-    \includegraphics[width=6cm]{logo_udg_color.eps}\\[1.25cm] % Logo, necesita paquete graphicx
+    \includegraphics[width=6cm]{assets/logo_udg_color.eps}\\[1.25cm] % Logo, necesita paquete graphicx
     
     \center
     \vspace{1cm}
@@ -129,55 +129,39 @@
 
 % Contenido
 
-
 \section*{Indicaciones}
 \begin{enumerate}[label=(\roman*)]
-    \item Realizar las actividades mencionadas a continuación y subir el reporte y/o evidencia en el apartado de Classroom correspondiente. 
+    \item Realizar las actividades mencionadas a continuación y subirlas en un documento en formato PDF en el apartado de Classroom correspondiente. 
 \end{enumerate}
-
 \subsection*{Actividades}
-Investiga y escribe una breve síntesis sobre lo que hayas encontrado de cada uno de los siguientes elementos de una CPU:
-\begin{itemize}
-    \item Arithmetic Logic Unit
-    \item Control Unit
-    \item Registers:
+\begin{enumerate}[label=\arabic*)]
+    \item Realiza un breve resumen sobre los conceptos mencionados en los siguientes artículos e incluye elementos gráficos que ilustren lo descrito:
     \begin{itemize}
-        \item General Purpose Register
-        \item Special Function Registers:
-        \begin{itemize}
-            \item Accumulator
-            \item Program Counter
-            \item Stack Pointer
-            \item Instruction Register
-            \item Status Flags/Registers
-        \end{itemize}
-        \item Instruction Decoder
-        \item Buses
-        \begin{itemize}
-            \item Data bus 
-            \item Address bus 
-            \item Control bus     
-        \end{itemize}
-        \item Clock signals
-        \item Interrupt Controller
+        \item \href{https://www.qt.io/embedded-development-talk/memory-options-for-embedded-systems-how-to-select-the-right-memory-configuration}{www.qt.io/embedded-development-talk/memory-options-for-embedded-systems-how-to-select-the-right-memory-configuration}
+        \item \href{https://embeddedhardwaredesign.com/what-is-embedded-memory/}{embeddedhardwaredesign.com/what-is-embedded-memory/}
+        \item \href{https://barrgroup.com/blog/types-memory-embedded-systems}{barrgroup.com/blog/types-memory-embedded-systems}
     \end{itemize}
-\end{itemize}
-Con base en la información que escribas, responde las siguientes preguntas:
-\begin{enumerate}
-    \item ¿Cómo se relacionan la ALU y la Control Unit?
-    \item ¿A qué parte de la memoria de un microcontrolador apunta el Program Counter?
-    \item ¿Y a qué parte apunta el Stack Pointer?
-    \item ¿Por qué se separan los registros de propósito general y específico?
-    \item ¿De dónde proviene la señal de reloj?
+    \item Crea un diagrama, ya sea a mano o en algún formato digital, de manera que te ayude a entender la clasificación y las características de cada tipo de memoria.
+    \item Investiga y responde:
+    \begin{itemize}
+        \item ¿Qué es un registro? 
+        \item ¿Qué significa ``word'' en el contexto de memorias?
+        \item ¿Qué tamaño tiene un ``word'' en el ATmega328P?
+        \item ¿Cuántas ``words'' puede almacenar el ATmega328P?
+        \item ¿Qué es una variable?
+        \item ¿Qué es una constante?
+        \item ¿Cuántos bytes ocupan una variable y cuántos una constante?
+        \item ¿Dónde se guardan las variables en un microcontrolador?
+        \item ¿Dónde se guardan las constantes en un microcontrolador?
+    \end{itemize}
 \end{enumerate}
+% \subsection*{Generalidades}
+% \begin{itemize}
+%     \item Las actividades escritas se entregarán en un documento en formato PDF.
+%     \item La evidencia de prácticas se entregará también en un documento en formato PDF, además de un archivo comprimido ZIP que incluya el código fuente, código objeto e imágenes como evidencia de la actividad realizada.
+%     \item En trabajos de investigación es obligatorio incluir las fuentes, el formato es libre pero se recomienda APA.
+% \end{itemize}
 
-\subsection*{Generalidades}
-\begin{itemize}
-    \item Las tareas se deberán cargar a Classroom en un documento en algún formato de texto enriquecido, PDF, o como imagen, siempre y cuando el contenido sea legible.
-    \item En caso de necesitar subir múltiples archivos, se pueden cargar en un formato comprimido (por ejemplo: zip).
-    \item Las tareas no serán válidas si se detecta plagio o copias directas de fuentes de internet, inclutendo texto generado por IA. 
-    \item En trabajos que incluyan investigación, es obligatorio añadir las fuentes; el formato es libre, pero se recomienda IEEE o APA.
-\end{itemize}
 % \begin{thebibliography}{10}
 
 %     \bibitem{1} Georg Goubau, \textit{Multi-element monopole antennas}, Wiesbaden, Dieterich'sche Verlagsbuchhandlung, 1976.
