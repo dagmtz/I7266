@@ -2,6 +2,7 @@
 000_Management/24B/D10/Steuerung
 004_Code/avr8-gnu-toolchain
 .vscode
+*~
 
 ### C ###
 # avr-gcc results
