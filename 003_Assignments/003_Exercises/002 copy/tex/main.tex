@@ -1,0 +1,224 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla para reporte en LaTeX
+% Por Daniel Martínez
+% dag.mtz.97@gmail.com
+%
+%
+% Basado en:
+%
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Title_Creation)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Declarar el tipo de documento
+\documentclass[10pt,letterpaper]{article} 
+
+% Paquetes para idioma, carácteres y símbolos
+\usepackage[condensed,math]{iwona}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Tipo de letra 
+% \usepackage{courier}
+% \usepackage{iwona}
+% \usepackage{tgbonum}
+% \usepackage{tgadventor}
+
+% Márgenes, figuras, gráficos, tablas, listas
+% \usepackage[top=1.2in, bottom=1.2in, left=1.5in, right=1.5in]{geometry}
+\usepackage{geometry}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{enumitem}
+% \usepackage{epstopdf}
+% \epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+% \usepackage{multirow}
+% \usepackage{textcomp}
+
+%\usepackage{mathtools}
+\usepackage{siunitx}
+%\usepackage{mathrsfs}
+
+
+% Otros
+\usepackage[obeyspaces]{url}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+% \usepackage[os=win]{menukeys}
+% \usepackage{biblatex}
+% \addbibresource{sample.bib}
+
+% \usepackage{fancyhdr}
+% \usepackage{listingsutf8}
+
+% Configuraciones 
+\hypersetup{
+    colorlinks=true,
+    filecolor=black,
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Comando para líneas horizontales
+
+\sisetup{separate-uncertainty=true}
+
+% \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+% \definecolor{mylilas}{RGB}{170,55,241}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio del documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% \hypersetup{pageanchor=false}
+
+% Portada
+\begin{titlepage}
+    \center
+    
+    \textsc{\LARGE Universidad de Guadalajara}\\[0.2cm] % Nombre de la universidad
+    \textsc{Centro Universitario de Ciencias Exactas e Ingenierías}\\[1cm]
+    
+    \HRule \\[0.3cm]
+    { 
+        \LARGE \textbf{Práctica 2} \\[0.3cm]
+        \large \textbf{Hello World en microcontroladores} \\[0.3cm]
+    }
+    \HRule \\[2cm]
+    
+    \includegraphics[width=6cm]{assets/logo_udg_color.eps}\\[1.25cm] % Logo, necesita paquete graphicx
+    
+    \center
+    \vspace{1cm}
+    \emph{Imparte:} \\ % Nombre del profesor
+    \textsc{Daniel Giovanni Martínez Sandoval} 
+    
+    \vfill
+    \textbf{I7266 - Programación de Sistemas Embebidos - D10} \\
+    Hecho en \textbf{\LaTeX}	
+\end{titlepage}
+
+% Índices
+
+% \tableofcontents	% Índice general
+% \listoffigures		% de figuras
+% \lstlistoflistings  % de listings
+% \listoftables		% de tablas
+
+% \hypersetup{pageanchor=true}
+% \newpage
+
+% Contenido
+
+\section{Objetivos}
+\subsection{Generales}
+\begin{enumerate}[label=\arabic*)]
+    \item Que el alumno se familiarice con el proceso de programación del microcontrolador que se usará durante el curso.
+\end{enumerate}
+\subsection{Particulares}
+\begin{enumerate}
+    \item Que el alumno desarrolle, en lenguaje C, una serie de programas que fortalezcan los conocimientos básicos de la arquitectura del ATmega328P.
+    \item Que el alumno, al practicar, desarrolle familiaridad hacia la estructura básica de un programa en C orientado a un microcontrolador.
+    \item Que el alumno aprenda a realizar un proceso básico de desarrollo y programación de un microcontrolador.
+\end{enumerate}
+\section{Indicaciones}
+\begin{itemize}
+    \item Una vez instalado el entorno de desarrollo descrito en \href{https://github.com/dagmtz/I7266/blob/main/005_Guides/AVR_env_setup_ES/AVR_env_setup_ES.pdf}{este enlace}, y en el editor de texto de su preferencia, codificar un programa en lenguaje C para cada objetivo, de forma que el ATmega328P realize lo que se indica cada uno de los siguientes enunciados:
+    \begin{enumerate}[label*=\arabic*.]
+        \item Encender y apagar un LED conectado al pin PC5 del ATmega328P con una frecuencia de \num{1 \pm 0.1}\unit{\hertz}.
+        \item Encender y apagar de manera secuencial cada uno de los pines del puerto C del ATmega328P, cambiando de LED a una frecuencia de \num{1 \pm 0.1}\unit{\hertz}.
+        \item Encender un led en el pin PC5 del ATmega328P y mantenerlo siempre encendido, excepto cuando se presione un pushbutton conectado a pin PD7.
+    \end{enumerate}
+    \pagebreak
+    \item Solo se aceptarán las prácticas que se realicen en lenguaje C y compilables con \texttt{avr-gcc}, para lo cual se sugiere el siguiente flujo de trabajo:
+    \begin{enumerate}
+        \item Crear una nueva carpeta (sugerencia extra: numerada), por ejemplo: \texttt{021\textunderscore Patron1}.
+        \item Dentro de la carpeta, colocar el archivo de código fuente correspondiente y nombrarlo \texttt{main.c}.
+        \item Copiar la dirección de la carpeta, la cual se puede obtener desde la barra de dirección del explorador de archivos.
+        \item Abrir una nueva instancia de Powershell (desde el menú de Windows).
+        \item Utilizar el comando: \texttt{cd ``C:\textbackslash direccion\textbackslash de\textbackslash la\textbackslash carpeta''} (substituyendo entre las comillas por la dirección que se copió).
+        \item Dentro de la carpeta, usar los comandos mencionados en la guía:
+        \begin{itemize}
+            \item Para compilar: \\ 
+                \texttt{avr-gcc main.c -mmcu=atmega328p -o main.elf}
+            \item Para convertir a formato intel hex: \\
+                \texttt{avr-objcopy -O ihex main.elf main.hex}
+            \item Para cargar el código al microcontrolador: \\
+                \texttt{avrdude -p atmega328p -c usbasp -U flash:w:main.hex}
+        \end{itemize}
+        \item \textbf{RECOMENDACIÓN:} se sugiere \textbf{NO} copiar y pegar los comandos aquí mencionados, más bien, escribirlos manualmente en la consola, ya que se pueden copiar de manera errónea debido al formato PDF.
+    \end{enumerate}
+    \item En Classroom, se deberá cargar un reporte de actividad que incluya lo siguiente:
+    \begin{enumerate}%[label=(\roman*)]
+        \item Portada u hoja de presentación que incluya (por lo menos): Título, nombre de los autores, nombre de la materia, nombre y escudo de la universidad.
+        \item Introducción.
+        \item Objetivos.
+        \item Marco teórico: una breve síntesis de los temas vistos en clase que se requirieron para entender y realizar la actividad.
+        \item Desarrollo: un resumen del procedimiento que se siguió para realizar la actividad.
+        \item Conclusión: un breve texto que señale los resultados y aprendizajes de la actividad.
+    \end{enumerate}
+\end{itemize}
+\subsection*{Generalidades}
+\begin{itemize}
+    \item Las actividades escritas se deberán cargar a Classroom en un documento en formato PDF.
+    \item Los archivos de código fuente también se deberán cargar a Classroom en su formato nativo, en caso de ser múltiples, se pueden cargar en un formato comprimido (por ejemplo: zip).
+    \item Las actividades no serán válidas hasta que se entreguen todos los requisitos, además, los archivos de código fuente que se entreguen deberán ser compilables sin errores (warnings sí están permitidas) y los binarios deberán realizar la funcionalidad descrita por la actividad. 
+    \item El profesor se reserva el derecho de solicitar (ya sea de manera grupal o individual) que los alumnos presenten su actividad funcional como parte de la evaluación de la misma actividad.
+    \item En trabajos que incluyan investigación, es obligatorio añadir las fuentes; el formato es libre, pero se recomienda IEEE o APA.
+\end{itemize}
+\end{document}
+% \begin{thebibliography}{10}
+
+%     \bibitem{1} Georg Goubau, \textit{Multi-element monopole antennas}, Wiesbaden, Dieterich'sche Verlagsbuchhandlung, 1976.
+    
+%     \bibitem{2} C.B. Ravipati, S.R. Best, \textit{The Goubau Multi Element Monopole Antenna - Revisited}, Hampton, Richmond upon Thames, 2007.
+    
+%     \bibitem{3} Ivor L. Morrow, Ryan Walker, Mark Finnis, William Whittow, \textit{Investigation of a Disk-Loaded Monopole Antenna with Extended Bandwidth Matching}, Addison Wesley, Massachusetts, 1994.
+    
+%     \bibitem{4} Constantine A. Balanis, \textit{Antenna Theory - Analysis and Design}, Arizona State University, 3rd edition, pp. 611–650, 1986.
+    
+%     \bibitem{5} R. C. Hansen, \textit{Electrically Small, Superdirective and Superconducting Antennas}, Wiley-Interscience, 2006.
+  
+% \end{thebibliography}
+
+% Esta es una plantilla para poner dos imágenes lado a lado en una sola figura
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}[b]{0.45\textwidth}
+% 			\centering
+% 			\captionsetup{justification=centering}
+% 			\includegraphics[width=0.7\textwidth]{example-image} % Imagen
+% 			\caption{Pie de imagen 1} % Pie de imagen
+% 			\label{img:1} % Etiqueta
+%     \end{subfigure}
+%     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+%       %(or a blank line to force the subfigure onto a new line)
+%     \begin{subfigure}[b]{0.45\textwidth}
+% 			\centering
+% 			\captionsetup{justification=centering}
+% 			\includegraphics[width=0.7\textwidth]{example-image} % Imagen
+% 			\caption{Pie de imagen 2} % Pie de imagen
+% 			\label{img:2} % Etiqueta
+%     \end{subfigure}
+%     \caption{Este es un ejemplo de figura, con subfiguras.}\label{fig:1} % Pie de figura y etiqueta
+% \end{figure}
+
+% \paragraph{Elaboración del prototipo} Cuando las pruebas y los resultados nos sean satisfactorios y además estos mismos se relacionen con los propuestos en los documentos comenzaremos a hacer simulaciones mas a fondo con la información que nosotros mismos vallamos obteniendo.
+
+% \paragraph{Simulación y resultados} Los resultados de las simulación deberán ser lo mas parecidos a los de los documentos, además intentaremos mejorar estos mismos con lo aprendido en el curso y nuestros conocimientos adquiridos.
+
+% \paragraph{Antena prototipo} Ya que nuestro primer prototipo coincida satisfactoriamente con los documentos además de con los cálculos hechos, tendremos que hacer un modelo definitivo de la antena y este sera el que presentara todos los resultados y mediciones, además de que este sera el que tenga un mejor rendimiento en todos sus parámetros y en base a este prototipo daremos nuestras colusiones finales.
+
+
+% \paragraph{Documentación del trabajo} El ultimo paso a realizar sera la documentación. Conforme vayamos avanzando en la construcción de la antena, se tomara nota de los resultados tanto satisfactorios como erróneos, y de esta forma tener una mejor visualización de como fue avanzando el proyecto y la construcción.
+

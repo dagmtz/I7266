@@ -17,11 +17,7 @@ void main(void)
     // Set PORTD bit 7 direction as output via Data Direction Register
 	DDRD |= (1 << PORTD7);
 
-    // Enter an infinite loop
-	while (1)
-	{	
-        // Turn on PORTD bit 7
-		PORTD = (1 << PORTD7);
-	}
-	
+    // Turn on PORTD bit 7
+	PORTD = (1 << PORTD7);
+
 }
