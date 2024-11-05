@@ -1160,11 +1160,201 @@ This 3-class structure provides a solid introduction to computer architecture wi
 
 [//]: # (---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------)
 
-### 
+### Microcontroller peripherals
+
+Sure! Here's a list of topics and concepts that students should study beforehand to feel adequately prepared for the assignment:
+
+### 1. **Microcontroller Basics**
+   - **Definition of a microcontroller:** Understand what a microcontroller is and its role in embedded systems.
+   - **Microcontroller architecture:** Basic overview of components like the CPU, memory, and peripherals.
+
+### 2. **Digital Logic Basics**
+   - **Binary and logic levels:** Understanding of binary numbers and how high/low voltage levels correspond to digital 1s and 0s.
+   - **Pull-up and pull-down resistors:** Basic knowledge of their role in setting default states for input pins.
+
+### 3. **Programming Fundamentals**
+   - **Basic syntax of the programming language used:** For example, C/C++ for Arduino or STM32, or Python for microcontrollers like MicroPython.
+   - **Control structures:** Loops (e.g., `for`, `while`) and conditional statements (`if-else`).
+
+### 4. **Microcontroller Development Environment**
+   - **Setting up the development environment:** How to install the IDE (e.g., Arduino IDE, Keil, MPLAB) and the necessary drivers.
+   - **Basic code uploading process:** Steps to compile and upload code to the microcontroller board.
+
+### 5. **Introduction to Peripherals**
+   - **What are peripherals?** Explanation of peripheral types (digital, analog) and their function in microcontrollers.
+
+### 6. **General-Purpose Input/Output (GPIO)**
+   - **Basic concepts:** What GPIO pins are and how to configure them as inputs or outputs.
+   - **Reading from and writing to GPIO pins:** How to set a pin high/low or read its state.
+   - **Debouncing push-buttons:** The need to handle push-button noise when using GPIO inputs.
+
+### 7. **Timers and Delays**
+   - **What is a timer?** Overview of timers and their common uses in microcontroller programming.
+   - **Delay functions:** Using basic delay functions for timing (e.g., `delay()` in Arduino or `HAL_Delay()` in STM32).
+   - **Generating periodic events:** How timers can be used to execute code at regular intervals.
+
+### 8. **Analog-to-Digital Conversion (ADC)**
+   - **Understanding analog vs. digital signals:** Basic differences and how an ADC works.
+   - **ADC resolution:** What resolution means (e.g., 8-bit, 10-bit) and how it affects the accuracy of the conversion.
+   - **Reading analog values:** Using functions to read from an ADC channel and interpret the results.
+
+### 9. **Basic Electronics**
+   - **LEDs, resistors, and potentiometers:** Understanding how these components work and their usage in simple circuits.
+   - **Ohm's Law:** Basic electrical principles for calculating resistor values.
+
+### 10. **Basic Troubleshooting Techniques**
+   - **Common debugging practices:** Techniques for finding issues in both software (e.g., print statements, debugging tools) and hardware (e.g., using a multimeter).
+   - **Interpreting error messages:** Understanding and fixing basic compilation errors and runtime issues.
+
+These topics will give students the foundational knowledge they need to approach the homework with confidence. A short study guide or reference material summarizing these topics could also be helpful as a preparatory resource.
 
 [//]: # (---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------)
 
+### Peripherals
 
+Sure! Below is a detailed text about microcontroller peripherals that can be used to create a comprehensive presentation. It covers the essential types of peripherals, their functions, and practical examples.
+
+---
+
+### **Introduction to Microcontroller Peripherals**
+
+Microcontrollers are powerful tools used in embedded systems to control various electronic devices and perform automated tasks. What makes microcontrollers versatile are their peripherals—specialized hardware components integrated within the microcontroller chip. Peripherals enable interaction with the outside world and provide functionality beyond the central processing unit (CPU). Let's explore the main types of microcontroller peripherals, their roles, and how they are used in embedded applications.
+
+### **1. What are Microcontroller Peripherals?**
+
+Peripherals are built-in hardware components of a microcontroller that facilitate interfacing with other devices, sensors, and actuators. They extend the capabilities of the microcontroller beyond simple computation, allowing it to interact with the physical world. Peripherals can be classified into different categories based on their functions, such as digital, analog, communication, and system peripherals.
+
+---
+
+### **2. Types of Microcontroller Peripherals**
+
+#### **2.1 General-Purpose Input/Output (GPIO)**
+
+- **Definition:** GPIO pins are the most basic form of microcontroller peripherals. They allow the microcontroller to interface with external digital devices by functioning as input or output pins.
+- **Key Concepts:**
+  - **Digital Input Mode:** Configured to read the state of an external signal (e.g., detecting if a button is pressed).
+  - **Digital Output Mode:** Configured to send signals to external components (e.g., turning an LED on or off).
+  - **Pull-up and Pull-down Resistors:** These are used to define the default state of a pin when no external signal is applied.
+- **Common Uses:**
+  - Controlling LEDs, reading button states, interfacing with simple digital sensors, or toggling relays.
+
+#### **2.2 Analog-to-Digital Converter (ADC)**
+
+- **Definition:** An ADC converts an analog signal (continuous voltage) into a digital value that the microcontroller can process.
+- **Key Concepts:**
+  - **Resolution:** The number of bits used to represent the analog signal in digital form (e.g., 8-bit, 10-bit). Higher resolution means better accuracy.
+  - **Sampling Rate:** The speed at which the ADC samples the input signal.
+  - **Reference Voltage:** The maximum input voltage that the ADC can measure. The digital value will represent a fraction of this reference voltage.
+- **Common Uses:**
+  - Reading sensor values (e.g., temperature, light, potentiometer position), audio signal processing, or measuring battery levels.
+
+#### **2.3 Digital-to-Analog Converter (DAC)**
+
+- **Definition:** The DAC performs the reverse of an ADC by converting a digital value into an analog signal (voltage).
+- **Key Concepts:**
+  - **Resolution:** Just like with ADCs, the DAC's resolution determines the granularity of the output signal.
+  - **Output Range:** The range of analog voltages the DAC can produce.
+- **Common Uses:**
+  - Generating audio signals, controlling analog actuators (e.g., variable speed motors), or producing variable voltage outputs.
+
+#### **2.4 Timers and Counters**
+
+- **Definition:** Timers and counters are peripherals used to measure time intervals, generate precise delays, or count external events.
+- **Key Concepts:**
+  - **Timer Modes:** Timers can operate in various modes, such as one-shot, periodic, or pulse-width modulation (PWM).
+  - **Prescalers:** Allow the timer to count at a slower rate than the system clock.
+  - **Interrupts:** Timers can generate interrupts at specific intervals to trigger events in the program.
+- **Common Uses:**
+  - Implementing delays, creating time-based events, generating PWM signals for motor control, or measuring pulse durations.
+
+#### **2.5 Pulse-Width Modulation (PWM)**
+
+- **Definition:** PWM is a technique where the duty cycle of a digital signal is modulated to control the power delivered to a load.
+- **Key Concepts:**
+  - **Duty Cycle:** The percentage of time the signal is high in one complete cycle.
+  - **Frequency:** The speed at which the PWM signal cycles.
+  - **Resolution:** How finely the duty cycle can be adjusted (often tied to the timer resolution).
+- **Common Uses:**
+  - Controlling the brightness of LEDs, adjusting motor speeds, or generating analog signals through a low-pass filter.
+
+---
+
+### **3. Communication Peripherals**
+
+Microcontrollers often need to communicate with other devices, such as sensors, displays, or even other microcontrollers. Communication peripherals handle data transmission and reception through various protocols.
+
+#### **3.1 Universal Asynchronous Receiver/Transmitter (UART)**
+
+- **Definition:** UART is a serial communication protocol that allows two devices to exchange data one bit at a time.
+- **Key Concepts:**
+  - **Baud Rate:** The speed of data transmission (bits per second).
+  - **Start/Stop Bits:** Used to indicate the beginning and end of a data packet.
+  - **Parity Bit:** An optional error-checking feature.
+- **Common Uses:**
+  - Communication with GPS modules, Bluetooth modules, serial monitors, or other microcontrollers.
+
+#### **3.2 Inter-Integrated Circuit (I2C)**
+
+- **Definition:** I2C is a synchronous serial communication protocol that uses two wires (SDA for data and SCL for clock) to connect multiple devices.
+- **Key Concepts:**
+  - **Master-Slave Configuration:** The master controls the clock, and slaves respond to the master's requests.
+  - **Addressing:** Each device on the bus has a unique address.
+  - **Speed Modes:** Standard (100 kbps), Fast (400 kbps), and High-speed (up to 3.4 Mbps).
+- **Common Uses:**
+  - Connecting temperature sensors, accelerometers, or LCD displays to the microcontroller.
+
+#### **3.3 Serial Peripheral Interface (SPI)**
+
+- **Definition:** SPI is a synchronous serial communication protocol that uses four wires (MOSI, MISO, SCLK, and CS) to connect multiple devices.
+- **Key Concepts:**
+  - **Master-Slave Configuration:** The master generates the clock signal, and communication is full-duplex.
+  - **Chip Select (CS) Line:** Used to enable communication with a specific slave device.
+  - **Clock Polarity and Phase:** Control how data is sampled with respect to the clock signal.
+- **Common Uses:**
+  - Interfacing with high-speed sensors, SD cards, or digital potentiometers.
+
+---
+
+### **4. System Peripherals**
+
+System peripherals assist in managing the microcontroller's core functions and power.
+
+#### **4.1 Watchdog Timer (WDT)**
+
+- **Definition:** A watchdog timer is used to reset the microcontroller if the program becomes unresponsive or "hangs."
+- **Key Concepts:**
+  - **Timeout Period:** The time after which the watchdog resets the system if not refreshed.
+  - **Reset Mechanism:** The microcontroller is automatically reset to restart the program.
+- **Common Uses:**
+  - Ensuring system reliability in safety-critical applications (e.g., automotive, industrial control).
+
+#### **4.2 Real-Time Clock (RTC)**
+
+- **Definition:** The RTC keeps track of the current time and date.
+- **Key Concepts:**
+  - **Battery Backup:** Allows the RTC to continue running even when the main power is off.
+  - **Alarms and Interrupts:** Can generate events at specific times or intervals.
+- **Common Uses:**
+  - Keeping time in clocks, data loggers, or event scheduling applications.
+
+---
+
+### **5. Peripheral Configuration and Programming**
+
+When using peripherals, understanding how to configure them in software is crucial. This typically involves:
+- **Register Configuration:** Setting specific bits in control registers to enable or configure a peripheral.
+- **Using Peripheral Libraries:** Libraries like Arduino’s built-in functions or HAL libraries for STM32 simplify peripheral programming.
+- **Interrupt Handling:** Using interrupts to handle time-sensitive tasks triggered by peripherals.
+
+---
+
+### **Conclusion**
+
+Understanding microcontroller peripherals is essential for developing embedded applications. Each peripheral provides unique capabilities that, when used together, allow microcontrollers to control complex systems and interface with a variety of devices. Mastering the use of GPIO, timers, ADCs, and communication interfaces lays the foundation for working with more advanced peripherals and embedded system design.
+
+---
+
+This text should provide ample content to create a presentation with separate slides covering each peripheral type, along with illustrations and practical examples.
 
 [//]: # (---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------)
 

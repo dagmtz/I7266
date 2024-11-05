@@ -1,0 +1,307 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[sfmath]{kpfonts}
+\usepackage{helvet}
+\usepackage[euler]{textgreek}
+%\usepackage{lmodern}
+\usepackage{siunitx}
+\usepackage{tikz}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks,
+  citecolor=cyan,
+  linkcolor=blue}
+
+
+\usetheme{Madrid}
+%\usecolortheme{default}
+
+\usepackage[backend=biber]{biblatex}
+%\bibliography{refs.bib}
+\addbibresource{refs.bib}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Microcontroller peripherals] %optional
+{Microcontroller peripherals}
+
+\subtitle{Communicating a microcontroller with the exterior}
+
+\author{Daniel Giovanni Martínez Sandoval} 
+
+\institute[CUCEI - UDG]
+{
+  \textsc{
+    \textbf{Universidad de Guadalajara}\\
+    {\tiny Centro Universitario de Ciencias Exactas e Ingenierías}
+  }
+}
+
+\date[October 2024] % (optional)
+{\footnotesize I7266 - Programación de Sistemas Embebidos - 2024B }
+
+\titlegraphic { 
+  \begin{tikzpicture}[overlay,remember picture]
+  \node[right=-2.5cm] at (current page.345){
+    \includegraphics[height=20mm]{assets/logo_udg_color.eps}
+  };
+  \end{tikzpicture}
+}
+%\logo{\includegraphics[height=15mm]{logo_udg_color.eps}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+%------------------------------------------------------------
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{What are peripherals?}
+\subsection{A method of communicating with the exterior}
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{What is a peripheral?}
+  Peripherals, in the context of computer science, are devices that provide input and/or output functionalities for a computer, that is, auxiliary devices to communicate to and from external components. \\
+  In the context of microcontrollers, peripherals are hardware blocks embedded in the microcontroller that allow them to interact with the outside. This is an important difference with microprocessors, since microprocessors do not include peripherals at all.
+  \end{frame}
+%---------------------------------------------------------
+
+\subsubsection{Importance}
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Importance of architecture}
+  In embedded systems, architecture plays a crucial role because these systems are mostly designed for specific tasks rather than general-purpose computing. Some things to take into account when choosing an architecture are:\pause
+  \begin{itemize}
+    \item <2-> \textbf{Power consumption:} Many embedded systems operate on battery power. A microcontroller packed with features but with a high current consumption is not always feasible for battery-operated systems. 
+    \item <3-> \textbf{Cost and size:} Choosing a microcontroller with just enough features to develop the intended functionality is key to saving money, but also in some cases the size, which in turn also reduces the cost.
+    \item <4-> \textbf{Performance and memory:} Depending on the application, some devices might only run certain OS which is targeted for a specific arquitechture, or maybe they need to be compatible with external memory. 
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Importance of architecture (cont.)}
+  So, just like buying any other thing, when buying a microcontroller to design an embedded system, you should take into account the size, your budget, the style, among many other things. But the thing with architecture in computer science and embedded systems is that saying ``architecture'' is really, really broad. \pause \\[5mm]
+  Why? you may ask... Well, in the beginning we had very simple circuits compared to those nowadays. We also had one way to program them: 1's and '0s. But today we have a huge variety of variables, even with circuits themselves, since we're not limited to Microcontrollers(\textmu Cs or MCUs) and Microprocessors(\textmu Ps), we also have Digital Signal Processors (DSPs), Field Programmable Gate Arrays (FPGAs), System-on-Chips (SoCs), and Application Specific Integrated Circuits (ASICS).  
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{Different kinds of architectures}
+  I said that architecture is a broad term, and is not only because of the current complexity of computational systems, but also because of the many variants of architecture or the many ways that we can organize components inside a microcontroller in order to understand its functionality. \pause
+
+  So, let us explore some different kinds of architectures.
+\end{frame}
+%---------------------------------------------------------
+
+\subsubsection{ISA}
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{ISAs}
+    \begin{block}{Instruction Set Architecture}
+      An Instruction Set Architecture (ISA) is part of the abstract model of a computer that defines how the CPU is controlled by the software. The ISA acts as an interface between the hardware and the software, specifying both what the processor is capable of doing as well as how it gets done. \cite{ISA} \pause
+    \end{block} 
+    The ISA provides the only way through which a user is able to interact with the hardware. It can be viewed as a programmer's manual because it is the portion of the machine that's visible to the assembly language programmer, the compiler writer, and the application programmer. 
+  \end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+  \frametitle{ISAs (cont.)}
+  Some popular ISAs are: \pause
+  \begin{itemize}
+    \item <2-> \textbf{ARM:} Used in smartphones. Based in RISC.
+    \item <3-> \textbf{x86:} Used in desktop and laptop computers. Is a CISC.
+    \item <4-> \textbf{RISC-V:} An \textit{open-source} ISA.
+    \item <5-> \textbf{MIPS:} Based in RISC and used in many network systems.
+    \item <6-> \textbf{AVR:} 8-bit RISC, which we will explore and use in this course.
+  \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item ATmega328P is an efficient and widely used 8-bit microcontroller.
+        \item Implements RISC and Harvard architecture for high performance.
+        \item Provides ample I/O options and peripherals for various embedded applications.
+    \end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\section{Questions}
+\begin{frame}{Questions}
+    \begin{center}
+        \Huge{Any Questions?}
+    \end{center}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+    \frametitle{References}
+    % This prints the bibliography on the slide
+    %\bibliographystyle{IEEEtran} % We choose the "plain" reference style
+    %\bibliography{refs} % Entries are in the refs.bib file
+    \printbibliography
+\end{frame}
+%---------------------------------------------------------
+
+\end{document}
+
+% \begin{frame}
+%   \frametitle{Format presentation}
+  
+%   In this slide, some important text will be
+%   \alert{highlighted} because it's important.
+%   Please, don't abuse it.
+  
+%   \begin{block}{Remark}
+%   Sample text
+%   \end{block}
+  
+%   \begin{alertblock}{Important theorem}
+%   Sample text in red box
+%   \end{alertblock}
+  
+%   \begin{examples}
+%   Sample text in green box. The title of the block is ``Examples".
+%   \end{examples}
+% \end{frame}
+
+
+% %---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Frame title}
+%   % Body
+% \end{frame}
+% %---------------------------------------------------------
+% %---------------------------------------------------------
+% \begin{frame}
+%   \frametitle{Embedded systems everywhere}
+%   Embedded systems are a little bit hard to define. This is because the applications for embedded systems has changed over time and has become very broad.\\[5mm] \pause
+%   If we say that embedded systems are ``small'' computer systems that make part of bigger electronic or mechanical systems, how many devices come to your mind?
+% \end{frame}
+  
+%   %---------------------------------------------------------
+%   \begin{frame}
+%     \frametitle{Embedded systems everywhere}
+%     Some areas full of embedded systems, in fact, are: \pause
+%     \begin{columns}
+%       \begin{column}{0.5\textwidth}
+%         \begin{itemize}
+%           \item<2-> Consumer Electronics
+%           \item<3-> Home Appliances
+%           \item<4-> Automotive
+%           \item<5-> Industrial Applications
+%           \item<6-> Medical Devices
+%           \item<7-> Telecommunications
+%         \end{itemize}
+%       \end{column}
+%       \begin{column}{0.5\textwidth}
+%         \begin{center}
+%           \begin{itemize}
+%             \item<8-> Aerospace and Defense
+%             \item<9-> Office Automation
+%             \item<10-> Security Systems
+%             \item<11-> Smart Home Devices
+%             \item<12-> Wearable Devices
+%           \end{itemize}
+%         \end{center}
+%       \end{column}
+%     \end{columns}
+%   \end{frame}
+  
+%   %---------------------------------------------------------
+  
+  
+%   %---------------------------------------------------------
+%   %Example of the \pause command
+%   \begin{frame}
+%   In this slide \pause
+  
+%   the text will be partially visible \pause
+  
+%   And finally everything will be there
+% \end{frame}
+%   %---------------------------------------------------------
+  
+%   \section{Second section}
+  
+%   %---------------------------------------------------------
+%   %Highlighting text
+%   \begin{frame}
+%   \frametitle{Sample frame title}
+  
+%   In this slide, some important text will be
+%   \alert{highlighted} because it's important.
+%   Please, don't abuse it.
+  
+%   \begin{block}{Remark}
+%   Sample text
+%   \end{block}
+  
+%   \begin{alertblock}{Important theorem}
+%   Sample text in red box
+%   \end{alertblock}
+  
+%   \begin{examples}
+%   Sample text in green box. The title of the block is ``Examples".
+%   \end{examples}
+% \end{frame}
+%   %---------------------------------------------------------
+  
+  
+%   %---------------------------------------------------------
+%   %Two columns
+%   \begin{frame}
+%   \frametitle{Two-column slide}
+  
+%   \begin{columns}
+  
+%   \column{0.5\textwidth}
+%   This is a text in first column.
+%   $$E=mc^2$$
+%   \begin{itemize}
+%   \item First item
+%   \item Second item
+%   \end{itemize}
+  
+%   \column{0.5\textwidth}
+%   This text will be in the second column
+%   and on a second tought this is a nice looking
+%   layout in some cases.
+%   \end{columns}
+% \end{frame}
+%   %---------------------------------------------------------
+
