@@ -1,11 +1,10 @@
 /*
- * File:                    main.c
- * Author:                  NOMBRE AQUÍ
- *                          CORREO AQUÍ
- * Date:                    FECHA AQUÍ, POR EJEMPLO: 15 Feb 2024
- * Target:                  ATmega328P (PARA QUÉ MICROCONTROLADOR/ARQUITECTURA ES?)
- * Description:             CLARAMENTE, AQUÍ VA LA DESCRIPCIÓN
- *                          ...
+ * File:            main.c
+ * Author:          Name Surname
+ *                  email
+ * Date:            Sun Jan 01 00:00:00 AM CST 2024
+ * Target:          ATmega328P
+ * Description:     This is a template for ATmega328P programs written in C
  */
 
 #define F_CPU 16000000U
