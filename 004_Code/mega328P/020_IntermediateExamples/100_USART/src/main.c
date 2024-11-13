@@ -50,12 +50,10 @@ void initialize(void)
 {
 
 	/* ---------- USART initialization ---------- */
-	uart_init( BAUD_CALC( BAUD ) ); // 8n1 transmission is set as default
+	uart_init( BAUD_CALC( BAUD ) ); /* 8n1 transmission is set as default */
 	
-	stdout = &uart0_io; // attach uart stream to stdout & stdin
-	stdin = &uart0_io; // uart0_in and uart0_out are only available if NO_USART_RX or NO_USART_TX is defined
-	
-	/* char usartBuffer[BUFF_SIZE]; */
+	stdout = &uart0_io; /* attach uart stream to stdout & stdin */
+	stdin = &uart0_io; /* uart0_in and uart0_out are only available if NO_USART_RX or NO_USART_TX is defined */
 
 	sei();
 	

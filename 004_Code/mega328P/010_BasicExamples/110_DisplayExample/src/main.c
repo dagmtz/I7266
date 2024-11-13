@@ -6,11 +6,30 @@
  * Target:                  ATmega328P
  * Description:             ...
  */
+/*
+ * File:            main.c
+ * Author:          Daniel Martinez
+ *                  dagmtzs@gmail.com
+ * Date:            Sun Nov 10 01:51:39 PM CST 2024
+ * Target:          ATmega328P
+ * Description:     This is a template for ATmega328P programs written in C
+ */
 
+/************************************************
+ *       << Area for macro definitions >>       *
+ ************************************************/
 #define F_CPU 16000000U
+#define MYUBRR 103
+
+/************************************************
+ *       << Area for includes >>                *
+ ************************************************/
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
 #define DELAY_PER_DIGIT 1U
 
+#include <stdlib.h>
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -29,17 +48,23 @@ void turn_off_digits(void);
 void turn_on_digit(uint8_t);
 void show_digit(uint8_t);
 void show_time(my_time_t *);
+void initialize(void);
+
+
+/************************************************
+ *       << Main function >>                    *
+ ************************************************/
 
 void main(void)
 {	
     my_time_t time = {.ss_u = 0, .ss_d = 0, .mm_u = 0, .mm_d = 0, .hh_u = 0, .hh_d = 0};
     my_time_t *p_time = &time;
-        
-    DDRB |= (1 << PORTB0) | (1 << PORTB1) | (1 << PORTB2) | (1 << PORTB3) | (1 << PORTB4) | (1 << PORTB5);
-    DDRC |= (1 << PORTC0) | (1 << PORTC1) | (1 << PORTC2) | (1 << PORTC3);
 
-    /* Este es el ciclo principal */
-    while (1U)
+    /* Initialization */
+    initialize();
+
+    /* Main loop */
+    while (1U) 
     {
         for (uint8_t i = 0; i < 200; i++)
         {
@@ -49,7 +74,12 @@ void main(void)
     }
     
     return;
+}
 
+void initialize()
+{
+    DDRB |= (1 << PORTB0) | (1 << PORTB1) | (1 << PORTB2) | (1 << PORTB3) | (1 << PORTB4) | (1 << PORTB5);
+    DDRC |= (1 << PORTC0) | (1 << PORTC1) | (1 << PORTC2) | (1 << PORTC3);
 }
 
 void tick(my_time_t *time)

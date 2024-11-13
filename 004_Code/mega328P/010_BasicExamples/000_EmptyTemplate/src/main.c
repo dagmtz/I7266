@@ -16,10 +16,8 @@
  *       << Area for includes >>                *
  ************************************************/
 #include <avr/io.h>
-#include <avr/interrupt.h>
 
 void initialize(void);
-
 
 /************************************************
  *       << Main function >>                    *
@@ -34,7 +32,6 @@ void main(void)
     {
 
     }
-
 }
 
 /************************************************
@@ -42,15 +39,5 @@ void main(void)
  ************************************************/
 void initialize(void)
 {
-    /* Enable global interrupts */
-    sei();
 
-    /* Set outputs and inputs */
-    DDRC |= (1U << PORTC5);
-}
-
-/* Overflow interrupt service routine */
-ISR(TIMER1_COMPA_vect) 
-{
-    PORTC ^= (1 << PORTC5);
 }

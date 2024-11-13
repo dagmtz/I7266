@@ -31,7 +31,7 @@ void main(void)
     /* Main loop */
     while (1U) 
     {
-
+        
     }
 
 }
@@ -41,10 +41,6 @@ void main(void)
  ************************************************/
 void initialize(void)
 {
-    /* Configure Timer0 in Normal Mode with prescaler 1024 */
-    TCCR0B |= (1U << CS02) | (1U << CS00); /* Set prescaler to 1024 */
-    TIMSK0 |= (1U << TOIE0); /* Enable overflow interrupt */
-
     /* Set Timer1 to CTC mode */
     TCCR1B |= (1U << WGM12);
 
@@ -58,20 +54,14 @@ void initialize(void)
     TIMSK1 |= (1U << OCIE1A);
 
     /* Set outputs and inputs */
-    DDRC |= (1U << PORTC4) | (1U << PORTC5);
+    DDRC |= (1U << PORTC5);
 
     /* Enable global interrupts */
     sei();
 }
 
-/* TIMER0 Overflow interrupt service routine */
-ISR(TIMER0_OVF_vect) 
-{
-    PORTC ^= (1U << PORTC5);
-}
-
 /* TIMER1 Compare A interrupt service routine */
 ISR(TIMER1_COMPA_vect) 
 {
-    PORTC ^= (1U << PORTC4);
+    PORTC ^= (1U << PORTC5);
 }

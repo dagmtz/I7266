@@ -5,7 +5,7 @@
 	#warning F_CPU is undefined, UBRR_CALC macro may not work properly
 #endif
 
-#define UBRR_CALC(x) ((F_CPU+(x)*8UL) / (16UL*(x))-1UL) // macro calculating precise UBRR value
+#define UBRR_CALC(x) ((F_CPU+(x)*8UL) / (16UL*(x))-1UL) /* macro calculating precise UBRR value */
 
 /* Set the frame and speed */
 void USART_init( unsigned int ubrr );

@@ -20,8 +20,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OBJ_DIR})
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ## AVR Chip Configuration
-# 8Mhz, this should match the crystal on your board,
-# I use 8Mhz and 3.3V for the lowest power consumption
+# 16Mhz, this should match the crystal on your board
 set(F_CPU 16000000UL)
 # CPU, you can find the list here:
 # https://gcc.gnu.org/onlinedocs/gcc/AVR-Options.html
@@ -33,10 +32,10 @@ set(PROG_TYPE usbasp)
 
 # AVR Fuses, must be in concordance with your hardware and F_CPU
 # http://eleccelerator.com/fusecalc/fusecalc.php?chip=atmega328p
-# set(E_FUSE 0xfd)
-# set(H_FUSE 0xda)
-# set(L_FUSE 0xfd)
-# set(LOCK_BIT 0xff)
+set(E_FUSE 0x05)
+set(H_FUSE 0xDE)
+set(L_FUSE 0xFF)
+set(LOCK_BIT 0xff)
 
 # Use AVR GCC toolchain
 set(CMAKE_SYSTEM_NAME Generic)
@@ -48,12 +47,7 @@ set(CMAKE_ASM_COMPILER avr-gcc)
 add_definitions(
     -DF_CPU=${F_CPU}
     -DBAUD=${BAUD}
-    # -DUSART 
-    # -DUSART_DEBUG
 )
-
-# mmcu MUST be passed to bot the compiler and linker, this handle the linker
-# set(CMAKE_EXE_LINKER_FLAGS -mmcu=${MCU})
 
 add_compile_options(
     -mmcu=${MCU} # MCU
@@ -104,17 +98,17 @@ add_custom_target(strip ALL avr-strip ${OBJ_DIR}/${PRODUCT_NAME}.elf DEPENDS ${O
 add_custom_target(hex ALL avr-objcopy -R .eeprom -O ihex ${OBJ_DIR}/${PRODUCT_NAME}.elf ${OBJ_DIR}/${PRODUCT_NAME}.hex DEPENDS strip)
 # Transform binary into hex file, this is the eeprom part (empty if you don't
 # use eeprom static variables)
-# add_custom_target(eeprom avr-objcopy -j .eeprom  --set-section-flags=.eeprom="alloc,load"  --change-section-lma .eeprom=0 -O ihex ${PRODUCT_NAME}.elf ${PRODUCT_NAME}.eep DEPENDS strip)
+add_custom_target(eeprom avr-objcopy -j .eeprom  --set-section-flags=.eeprom="alloc,load"  --change-section-lma .eeprom=0 -O ihex ${PRODUCT_NAME}.elf ${PRODUCT_NAME}.eep DEPENDS strip)
 
 # Upload the firmware with avrdude
 # add_custom_target(upload sudo avrdude  -c ${PROG_TYPE} -p ${MCU} -U flash:w:${OBJ_DIR}/${PRODUCT_NAME}.hex DEPENDS hex)
 add_custom_target(upload avrdude  -c ${PROG_TYPE} -p ${MCU} -U flash:w:${OBJ_DIR}/${PRODUCT_NAME}.hex DEPENDS hex)
 
 # Upload the eeprom with avrdude
-# add_custom_target(upload_eeprom avrdude -c ${PROG_TYPE} -p ${MCU}  -U eeprom:w:${PRODUCT_NAME}.eep DEPENDS eeprom)
+add_custom_target(upload_eeprom avrdude -c ${PROG_TYPE} -p ${MCU}  -U eeprom:w:${PRODUCT_NAME}.eep DEPENDS eeprom)
 
 # Burn fuses
-# add_custom_target(fuses avrdude -c ${PROG_TYPE} -p ${MCU}  -U lfuse:w:${L_FUSE}:m -U hfuse:w:${H_FUSE}:m -U efuse:w:${E_FUSE}:m -U lock:w:${LOCK_BIT}:m )
+add_custom_target(fuses avrdude -c ${PROG_TYPE} -p ${MCU}  -U lfuse:w:${L_FUSE}:m -U hfuse:w:${H_FUSE}:m -U efuse:w:${E_FUSE}:m -U lock:w:${LOCK_BIT}:m )
 
 # Start serial communication with screen 
 add_custom_target(serial0 sudo screen /dev/ttyUSB0 ${BAUD})
@@ -123,4 +117,3 @@ add_custom_target(serial1 sudo screen /dev/ttyUSB1 ${BAUD})
 # Clean extra files
 file(GLOB OBJ_FILES "obj/*") # Load all files in obj folder
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${OBJ_FILES}")
-
