@@ -1,3 +1,0 @@
-CompileFlags:
-    Add: [-mmcu=atmega328p, -Wall, -Os, -D__AVR_ATmega328P__, -DF_CPU=16000000UL, -DBAUD=19200UL, --include-directory=/usr/avr/include, --include-directory=./inc]
-    Compiler: /usr/bin/avr-gcc
