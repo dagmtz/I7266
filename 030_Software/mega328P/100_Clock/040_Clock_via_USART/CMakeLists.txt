@@ -28,7 +28,7 @@ set(F_CPU 16000000UL)
 # https://gcc.gnu.org/onlinedocs/gcc/AVR-Options.html
 set(MCU atmega328p)
 # DS3231 Baudrate for UART, read avr include/util/setbaud.h for usage
-set(BAUD 19200)
+set(BAUD 115200)
 # The programmer to use, read avrdude manual for list
 set(PROG_TYPE usbasp)
 # Programmer speed

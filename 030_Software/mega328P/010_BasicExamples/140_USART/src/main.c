@@ -25,7 +25,7 @@ char USART_buffer[USART_BUFFER_SIZE];
 #include "usart.h"
 
 
-typedef struct _i7266_time_t
+typedef struct _tag_my_time_t
 {
     uint8_t ss_u;
     uint8_t ss_d;
@@ -33,18 +33,18 @@ typedef struct _i7266_time_t
     uint8_t mm_d;
     uint8_t hh_u;
     uint8_t hh_d;
-}i7266_time_t;
+}my_time_t;
 
-void tick(i7266_time_t *);
+void tick(my_time_t *);
 void turn_off_digits(void);
 void turn_on_digit(uint8_t);
 void show_digit(uint8_t);
-void show_time(i7266_time_t *);
+void show_time(my_time_t *);
 
 void main(void)
 {	
-    i7266_time_t time = {.ss_u = 0, .ss_d = 0, .mm_u = 0, .mm_d = 0, .hh_u = 0, .hh_d = 0};
-    i7266_time_t *p_time = &time;
+    my_time_t time = {.ss_u = 0, .ss_d = 0, .mm_u = 0, .mm_d = 0, .hh_u = 0, .hh_d = 0};
+    my_time_t *p_time = &time;
         
     DDRB |= (1 << PORTB0) | (1 << PORTB1) | (1 << PORTB2) | (1 << PORTB3) | (1 << PORTB4) | (1 << PORTB5);
     DDRC |= (1 << PORTC0) | (1 << PORTC1) | (1 << PORTC2) | (1 << PORTC3);
@@ -132,7 +132,7 @@ void main(void)
 
 }
 
-void tick(i7266_time_t *time)
+void tick(my_time_t *time)
 {
     time->ss_u++;
     if (time->ss_u > 9)
@@ -184,7 +184,7 @@ void show_digit(uint8_t number)
     PORTC = ((PORTC & 0xF0) | (number & 0x0F));
 }
 
-void show_time(i7266_time_t *time)
+void show_time(my_time_t *time)
 {
     show_digit(time->ss_u);
     turn_on_digit(0);

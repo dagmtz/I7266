@@ -75,20 +75,16 @@ void initialize()
     DDRB |= (1 << PORTB0) | (1 << PORTB1) | (1 << PORTB2) | (1 << PORTB3) | (1 << PORTB4) | (1 << PORTB5);
     DDRC |= (1 << PORTC0) | (1 << PORTC1) | (1 << PORTC2) | (1 << PORTC3);
 
-    /* Set Timer1 to CTC mode */
-    TCCR1B |= (1U << WGM12);
+    /* Set External Interrupt Control Register A to trigger an interrupt request with a falling edge of INT0*/
+    EICRA &= ~(1 << ISC00);
+    EICRA |= (1 << ISC01);
 
-    // Set the prescaler to 64
-    TCCR1B |= (1U << CS12) | (1U << CS10);
+    /* Enable External Interrupt Request 0 */
+    EIMSK |= (1 << INT0);
 
-    /* Compare match value for 1-second delay */
-    OCR1A = 15624U;
-
-    /* Enable Timer1 compare match interrupt */
-    TIMSK1 |= (1U << OCIE1A);
-
-    /* Set outputs and inputs */
-    DDRC |= (1U << PORTC5);
+    /* Set PORTD2 as input and enable internal pull-up resistor */
+    DDRD &= ~(1 << PD2);
+    PORTD |= (1 << PD2);
 
     /* Enable global interrupts */
     sei();
@@ -162,8 +158,8 @@ void show_time(my_time_t *time)
     turn_on_digit(5);
 }
 
-/* TIMER1 Compare A interrupt service routine */
-ISR(TIMER1_COMPA_vect) 
+/* INT0 external interrupt service routine */
+ISR(INT0_vect) 
 {
     heartbeat = true;
 }

@@ -16,9 +16,11 @@
  *       << Area for includes >>                *
  ************************************************/
 #include <avr/io.h>
+#include <avr/interrupt.h>
+
+volatile uint8_t a;
 
 void initialize(void);
-
 
 /************************************************
  *       << Main function >>                    *
@@ -26,7 +28,7 @@ void initialize(void);
 void main(void)
 {
     /* Initialization */
-    void initialize();
+    initialize();
 
     /* Main loop */
     while (1U) 
@@ -41,5 +43,25 @@ void main(void)
  ************************************************/
 void initialize(void)
 {
+    /* Set External Interrupt Control Register A to trigger an interrupt request with a falling edge of INT0*/
+    EICRA &= ~(1 << ISC00);
+    EICRA |= (1 << ISC01);
 
+    /* Enable External Interrupt Request 0 */
+    EIMSK |= (1 << INT0);
+
+    /* Set PORTD2 as input and enable internal pull-up resistor */
+    DDRD &= ~(1 << PD2);
+    PORTD |= (1 << PD2);
+
+    /* Set PORTD4 as output */
+    DDRD |= (1 << PD4);
+
+    /* Enable global interrupts */
+    sei();
+}
+
+ISR(INT0_vect)
+{
+    PORTD ^= (1 << PD4);
 }
