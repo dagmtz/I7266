@@ -50,25 +50,25 @@ void main(void)
     DDRC |= (1 << PORTC0) | (1 << PORTC1) | (1 << PORTC2) | (1 << PORTC3);
 
     USART_init(UBRR_CALC(BAUD_RATE));
-    USART_puts( "\033[2J\033[H" );
-    USART_puts( "\033[1;36m> USART Ready\r\n\n" );
-    USART_puts( "\033[0;32mHello World! :)\r\n" );
+    USART_puts( "\0[2J\0[H" );
+    USART_puts( "\0[1;36m> USART Ready\r\n\n" );
+    USART_puts( "\0[0;32mHello World! :)\r\n" );
 
 
     /* Set seconds through USART */
-    USART_puts( "\033[0mWrite the seconds\r\n" );
+    USART_puts( "\0[0mWrite the seconds\r\n" );
     USART_getl(USART_buffer, USART_BUFFER_SIZE);
     _delay_ms(DELAY_TIME_MS); 
     if( atoi(USART_buffer) > 59 || atoi(USART_buffer) < 0)
     {
-        USART_puts( "\nThe number received was:\033[0;33m " );
+        USART_puts( "\nThe number received was:\0[0;m " );
         USART_puts( USART_buffer );
         USART_puts( "\n" );
-        USART_puts( "\033[1;31mBut that number is not valid!\n\r" );
-        USART_puts( "\033[0;33mPlease reset and enter a valid number." );
+        USART_puts( "\0[1;31mBut that number is not valid!\n\r" );
+        USART_puts( "\0[0;mPlease reset and enter a valid number." );
         while(1);
     }
-    USART_puts( "\nSetting the seconds to:\033[0;33m " );
+    USART_puts( "\nSetting the seconds to:\0[0;m " );
     USART_puts( USART_buffer );
     USART_puts( "\n" );    
 
@@ -76,19 +76,19 @@ void main(void)
     time.ss_d = ((uint8_t) atoi(USART_buffer) - time.ss_u) / 10U;
 
     /* Set minutes through USART */
-    USART_puts( "\033[0mWrite the minutes\r\n" );
+    USART_puts( "\0[0mWrite the minutes\r\n" );
     USART_getl(USART_buffer, USART_BUFFER_SIZE);
     _delay_ms(DELAY_TIME_MS); 
     if( atoi(USART_buffer) > 59 || atoi(USART_buffer) < 0)
     {
-        USART_puts( "\nThe number received was:\033[0;33m " );
+        USART_puts( "\nThe number received was:\0[0;m " );
         USART_puts( USART_buffer );
         USART_puts( "\n" );
-        USART_puts( "\033[1;31mBut that number is not valid!\n\r" );
-        USART_puts( "\033[0;33mPlease reset and enter a valid number." );
+        USART_puts( "\0[1;31mBut that number is not valid!\n\r" );
+        USART_puts( "\0[0;mPlease reset and enter a valid number." );
         while(1);
     }
-    USART_puts( "\nSetting the minutes to:\033[0;33m " );
+    USART_puts( "\nSetting the minutes to:\0[0;m " );
     USART_puts( USART_buffer );
     USART_puts( "\n" );    
 
@@ -96,19 +96,19 @@ void main(void)
     time.mm_d = ((uint8_t) atoi(USART_buffer) - time.ss_u) / 10U;
 
     /* Set hours through USART */
-    USART_puts( "\033[0mWrite the hours\r\n" );
+    USART_puts( "\0[0mWrite the hours\r\n" );
     USART_getl(USART_buffer, USART_BUFFER_SIZE);
     _delay_ms(DELAY_TIME_MS); 
     if( atoi(USART_buffer) > 23 || atoi(USART_buffer) < 0)
     {
-        USART_puts( "\nThe number received was:\033[0;33m " );
+        USART_puts( "\nThe number received was:\0[0;m " );
         USART_puts( USART_buffer );
         USART_puts( "\n" );
-        USART_puts( "\033[1;31mBut that number is not valid!\n\r" );
-        USART_puts( "\033[0;33mPlease reset and enter a valid number." );
+        USART_puts( "\0[1;31mBut that number is not valid!\n\r" );
+        USART_puts( "\0[0;mPlease reset and enter a valid number." );
         while(1);
     }
-    USART_puts( "\nSetting the hours to:\033[0;33m " );
+    USART_puts( "\nSetting the hours to:\0[0;m " );
     USART_puts( USART_buffer );
     USART_puts( "\n" );    
 
